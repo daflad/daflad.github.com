@@ -21,19 +21,16 @@
 			</header>
 
 		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="https://www.twitter.com/hotdawgbard" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-				</ul>
+			<footer id="footer">				
 				<ul class="copyright">
-					<li>&copy; hotdaw.gs 2018.</li>
+					<li>&copy; hotdaw.gs <span id="year"></span></li>
 				</ul>
 			</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				document.getElementById("year").innerHTML = new Date().getFullYear();
+			</script>
 	</body>
 </html>
