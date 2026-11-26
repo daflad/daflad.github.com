@@ -83,10 +83,6 @@
           <li><a href="#watch">{{ t.watch }}</a></li>
           {%- endif %}
           <li><a href="#book">{{ t.book }}</a></li>
-          {%- assign main_link = band.links | first %}
-          {%- if main_link %}
-          <li><a href="{{ main_link.url }}">{{ main_link.name }}</a></li>
-          {%- endif %}
         </ul>
       </nav>
     </div>

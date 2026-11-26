@@ -34,14 +34,14 @@ bio_cy: >-
 email: info@hotdaw.gs
 phone:   # optional, e.g. 07700 900123
 
-# Social links, shown in the footer. The first one also goes in the top menu.
+# Social links, shown in the footer. Keep Instagram first: the promo kit's "Tag us" links to it.
 links:
   - name: Instagram
     url: https://www.instagram.com/hotdawgassassins
   - name: YouTube
     url: https://www.youtube.com/@hotdawgassassins
-  # - name: Facebook
-  #   url: https://www.facebook.com/hotdawgassassins
+  - name: Facebook
+    url: https://www.facebook.com/hotdawgassassins
 
 # Videos shown under "Watch". The id is the part after "watch?v=" in a YouTube link.
 videos:
