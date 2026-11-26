@@ -195,9 +195,15 @@
               {%- if notes %}
               <p class="gig-notes">{{ notes }}</p>
               {%- endif %}
-              {%- if gig.photos.size > 0 %}
+              {%- if gig.flyer or gig.photos.size > 0 %}
               {%- capture caption %}{{ venue }}{% if town %}, {{ town }}{% endif %}, {% include date.html date=gig.date format="dmy" %}{% endcapture %}
               <ul class="gig-photos">
+                {%- if gig.flyer %}
+                {%- assign thumb_path = "/images/thumbs/" | append: gig.flyer %}
+                {%- assign thumb = site.static_files | where: "path", thumb_path | first %}
+                {%- assign alt = t.flyer_alt | replace: "[caption]", caption %}
+                <li class="gig-flyer"><a href="{{ img }}{{ gig.flyer }}" data-group="gig-{{ iso }}" data-caption="{{ caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ gig.flyer }}" width="240" height="340" loading="lazy" alt="{{ alt | escape }}"></a></li>
+                {%- endif %}
                 {%- for photo in gig.photos %}
                 {%- assign thumb_path = "/images/thumbs/" | append: photo %}
                 {%- assign thumb = site.static_files | where: "path", thumb_path | first %}

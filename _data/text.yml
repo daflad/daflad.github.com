@@ -27,6 +27,7 @@ en:
   past_intro: A handful of the gigs we've played since [year].
   photo_alt: Photo from [caption]
   photo_alt_n: Photo [n] of [m] from [caption]
+  flyer_alt: Flyer for [caption]
   photos_help: >-
     Free to use on posters and social posts. Open a photo to download it, or download
     the <a href="[cover]" download="hot-dawg-assassins-cover.jpg">cover photo</a>.
@@ -72,6 +73,7 @@ cy:
   past_intro: Llond llaw o'r gigiau rydyn ni wedi'u chwarae ers [year].
   photo_alt: "Llun: [caption]"
   photo_alt_n: "Llun [n] o [m]: [caption]"
+  flyer_alt: "Poster ar gyfer [caption]"
   photos_help: >-
     Mae croeso i chi eu defnyddio ar bosteri a'r cyfryngau cymdeithasol. Agorwch lun i'w
     lawrlwytho, neu lawrlwythwch y <a href="[cover]" download="hot-dawg-assassins-cover.jpg">prif lun</a>.

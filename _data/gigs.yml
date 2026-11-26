@@ -18,6 +18,7 @@
 #   link_text: Tickets            # button label for the link, default "Event page"
 #   notes: Support from ...       # one short line
 #   notes_cy: Yn cefnogi ...      # the notes in Welsh, for the Welsh page (optional)
+#   flyer: WinterFolk_2023.jpg    # optional: the gig's flyer or poster, in the images folder
 #   photos:                       # optional, for past gigs: photos in the images folder,
 #     - Skerries.jpg              # shown as small pictures you can tap to see full size
 
@@ -28,12 +29,16 @@
   venue: Bonnie Pilgrim Winterwell Launch Party
   venue_cy: Parti Lansio Winterwell Bonnie Pilgrim
   town: YHA Llanberis
+  notes: With Tom Blackwell
+  notes_cy: Gyda Tom Blackwell
+  flyer: Winterwell_Launch_2026.jpg
 
 - date: 2023-12-14
   venue: Winter Folk
   town: YHA Llanberis
-  notes: With Bonnie Pilgrim
-  notes_cy: Gyda Bonnie Pilgrim
+  notes: With Tino and Bonnie Pilgrim
+  notes_cy: Gyda Tino a Bonnie Pilgrim
+  flyer: WinterFolk_2023.jpg
 
 - date: 2016-09-19
   venue: The Skerries

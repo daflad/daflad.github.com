@@ -25,6 +25,8 @@ Once the date has passed, the gig moves to "Past gigs" by itself.
 
 Upload photos to the `images` folder first (on GitHub: open `images`, then **Add file → Upload files**).
 
+Photos straight from a phone can include where they were taken, and anyone can download the files on this site. On an iPhone, tap **Options** on the share sheet and turn off **Location** before saving or sending the photo you'll upload.
+
 - **Photos from a past gig:** list them under that gig in `_data/gigs.yml`:
 
   ```yaml
@@ -33,6 +35,7 @@ Upload photos to the `images` folder first (on GitHub: open `images`, then **Add
   ```
 
   They show as small pictures under the gig. For a faster page, also upload a small copy (about 360 × 240) with the same name to `images/thumbs`.
+- **A gig's flyer or poster:** add `flyer: WinterFolk_2023.jpg` to that gig. It shows whole, before any photos. A small copy in `images/thumbs` (about 240 wide) keeps the page fast.
 - **New photos for the Photos section** (free for promoters to use): add them under `photos:` in `_data/band.yml`, with their width and height in pixels.
 
 ## Welsh page
