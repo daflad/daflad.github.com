@@ -7,6 +7,9 @@
   --line-strong: #5c554d;
   --text: #eee9e1;
   --muted: #aaa298;
+  --book-bg: #121512;
+  --book-filter: contrast(1.45) brightness(0.62) saturate(0.9);
+  --book-light: rgb(255 205 140 / 0.5);
 
   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --max: 70rem;
@@ -179,6 +182,157 @@ a:hover { text-decoration-thickness: 2px; }
   text-wrap: balance;
 }
 
+.intro {
+  max-width: 34rem;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* Pages other than the home page: a shorter cover, the band name top left (back
+   to the home page), and the page title over the bottom of the cover. */
+.home-link {
+  position: absolute;
+  top: 1.1rem;
+  left: var(--gutter);
+  z-index: 1;
+  font-size: 1.375rem;
+  font-stretch: extra-condensed;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0.5em rgb(0 0 0 / 0.5);
+}
+
+.page-title {
+  font-size: clamp(3rem, 14vw, 6rem);
+  font-stretch: extra-condensed;
+  font-weight: 900;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.masthead-page .masthead-photo img {
+  aspect-ratio: auto;
+  height: clamp(12rem, 36vh, 20rem);
+  max-height: none;
+  object-position: 50% 28%;
+}
+
+.masthead-page .masthead-text { margin-top: clamp(-4rem, -4vw, -2rem); }
+
+/* Less space between a page's header and its first section. */
+.masthead-page + main > .section:first-child { padding-top: clamp(1.75rem, 4vw, 3rem); }
+
+/* The promo kit page: the lit face, a little smaller than in "Book us". Its glow
+   carries on past the header, fading out behind the start of the page (main is
+   positioned so the text stays on top). */
+.masthead-page.lit-face {
+  --img-h: 30rem;
+  /* Clip at the sides (the face is wider than a phone), not at the bottom.
+     Browsers without "clip" keep "hidden": the glow just stops at the header. */
+  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+  background: none;
+  text-align: center;
+}
+
+.masthead-page.lit-face + main { position: relative; }
+
+@media (min-width: 760px) {
+  .masthead-page.lit-face { --img-h: 40rem; }
+}
+
+.masthead-page.lit-face .masthead-text {
+  margin-top: 0;
+  padding-top: calc(var(--img-h) * 0.47);
+  padding-bottom: 0.5rem;
+}
+
+/* The slim bar that slides in once the page's header has scrolled away. */
+html { scroll-padding-top: 4.5rem; }
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.25s ease, visibility 0s 0.25s;
+}
+
+.bar.is-shown {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar, .bar.is-shown { transition: none; }
+}
+
+.bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+}
+
+.bar-name {
+  font-size: 1.25rem;
+  font-stretch: extra-condensed;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.bar-links a { text-decoration: none; white-space: nowrap; }
+.bar-links a:hover { text-decoration: underline; }
+
+.bar-links .bar-book {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 3px;
+  background: var(--text);
+  color: var(--bg);
+}
+
+.bar-links .bar-book:hover { background: #fff; text-decoration: none; }
+
+/* Small phones: just Gigs and Book us, a little tighter. */
+@media (max-width: 479px) {
+  .bar-optional { display: none; }
+  .bar-inner { gap: 0.75rem; }
+  .bar-name { font-size: 1.0625rem; }
+  .bar-links { gap: 0.75rem; }
+  .bar-links .bar-book { padding: 0.3rem 0.55rem; }
+}
+
+/* The smallest phones: the band name and Book us only. */
+@media (max-width: 359px) {
+  .bar-links li:first-child { display: none; }
+}
+
 .next-gig {
   margin-top: 1.25rem;
   color: var(--muted);
@@ -316,15 +470,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .follow a { color: var(--text); }
 
-.past { margin-top: 3rem; }
-
-.past-title {
-  margin-bottom: 0.25rem;
-  color: var(--muted);
-  font-size: 1.25rem;
-  font-stretch: condensed;
-  font-weight: 800;
-}
+.past-link { margin-top: 2rem; }
 
 .past-intro {
   margin-bottom: 0.75rem;
@@ -513,6 +659,154 @@ html:has(.lightbox[open]) { overflow: hidden; }
   gap: 0.5rem;
 }
 
+/* Promo kit */
+
+.promo-intro {
+  max-width: 40rem;
+  margin-bottom: 1.75rem;
+  color: var(--muted);
+}
+
+.promo-intro a { color: var(--text); }
+
+/* Two across on phones, three on wider screens: six items make even rows. */
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1rem;
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 760px) {
+  .promo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+}
+
+.promo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Each preview sits whole in the same-sized frame, whatever its shape. */
+.promo-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 11rem;
+  margin-bottom: 0.6rem;
+  padding: 0.75rem;
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+@media (min-width: 760px) {
+  .promo-preview { height: 17rem; padding: 1.25rem; }
+}
+
+.promo-preview img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a.promo-preview:hover img { outline: 1px solid var(--text); outline-offset: 2px; }
+
+.promo-logos {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0;
+  overflow: hidden;
+}
+
+.promo-logos span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 0.5rem;
+}
+
+.promo-logos .on-light { background: #eee9e1; }
+.promo-logos img { max-width: 62%; max-height: 62%; }
+
+.promo-title { font-size: 1.0625rem; font-weight: 700; }
+
+.promo-note {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  text-wrap: pretty;
+}
+
+.promo-note a { color: var(--text); }
+
+.promo-meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.promo-item .btn { align-self: flex-start; margin-top: 0.6rem; }
+
+.logo-files { margin: 0.4rem 0 0; font-size: 0.9375rem; }
+.logo-files div { display: flex; flex-wrap: wrap; gap: 0 0.75rem; padding: 0.35rem 0; border-top: 1px solid var(--line); }
+.logo-files dt { flex: 1 1 8rem; color: var(--muted); }
+.logo-files dd { display: flex; gap: 1rem; margin: 0; font-weight: 600; }
+
+.promo-more {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 760px) {
+  .promo-more { grid-template-columns: 3fr 2fr; gap: 3rem; }
+}
+
+.promo-subtitle {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.copy-block {
+  max-width: 40rem;
+  margin-top: 1rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.copy-label {
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.copy-text { margin-bottom: 0.75rem; text-wrap: pretty; }
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatches li { display: flex; align-items: center; gap: 0.5rem; }
+
+.swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+}
+
+.swatches code { color: var(--muted); font-size: 0.875rem; }
+
 /* Reviews */
 
 .reviews {
@@ -541,16 +835,87 @@ html:has(.lightbox[open]) { overflow: hidden; }
 
 .review figcaption a { color: var(--text); }
 
+/* The lit face: the low-poly face from the old site, lit like a stage. A warm
+   light from above catches the facets, and the edges fade to dark with a grainy,
+   dithered edge. Used behind "Book us" and at the top of the promo kit page.
+   Sizes follow --img-h, the face image's height (it is 1.6 times as wide), so the
+   face and the words over it line up at every screen size. */
+.lit-face {
+  --img-h: 34rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--book-bg);
+}
+
+@media (min-width: 760px) {
+  .lit-face { --img-h: 52rem; }
+}
+
+.lit-face::before,
+.lit-face::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+/* The face, with more contrast so the facets read as a lit surface. The box is
+   exactly the image's shape, centred; spot-mask.svg fades it out in an oval. */
+.lit-face::before {
+  z-index: -2;
+  top: calc(var(--img-h) * -0.05);
+  left: 50%;
+  width: calc(var(--img-h) * 1.6);
+  height: var(--img-h);
+  margin-left: calc(var(--img-h) * -0.8);
+  background: url("../images/bg.jpg") center / 100% 100% no-repeat;
+  filter: var(--book-filter);
+  -webkit-mask: url("spot-mask.svg") center / 100% 100% no-repeat;
+  mask: url("spot-mask.svg") center / 100% 100% no-repeat;
+}
+
+/* The light: warm, from above, strongest on the forehead. */
+.lit-face::after {
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(calc(var(--img-h) * 0.44) calc(var(--img-h) * 0.42) at 50% calc(var(--img-h) * 0.2), var(--book-light), transparent);
+  mix-blend-mode: overlay;
+}
+
+/* Words set across the beard, under the eyes and moustache. */
+.lit-face .face-title {
+  font-size: min(calc(var(--img-h) * 0.17), 17vw);
+  line-height: 0.85;
+  text-shadow: 0 0.04em 0.3em rgb(0 0 0 / 0.45);
+}
+
 /* Book us */
 
 .book {
-  padding-block: clamp(3rem, 7vw, 5rem);
+  --muted: #c9c2b8;   /* lighter small print, to read over the image */
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
   border-top: 1px solid var(--line);
-  background: var(--surface);
+  text-align: center;
 }
+
+/* The light comes up as the section scrolls into view (site.js adds
+   .lights-down only when it can take it off again, and never for people who
+   ask for less motion). */
+.book::before,
+.book::after { transition: opacity 1.6s ease-out; }
+.book.lights-down::before { opacity: 0.3; }
+.book.lights-down::after { opacity: 0; }
+
+.book .wrap { padding-top: calc(var(--img-h) * 0.47); }
+.book .section-title { margin-bottom: calc(var(--img-h) * 0.045); }
+
+.book-lead { margin-inline: auto; }
+.facts { display: inline-block; text-align: left; }
+
 
 .book-lead {
   max-width: 34ch;
+  text-wrap: pretty;
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   line-height: 1.45;

@@ -1,0 +1,47 @@
+# The promo kit: ready-made files for promoters, shown under "Promo kit".
+# Files go in the promo folder; a small preview of each (about 400 px) goes in promo/thumbs.
+# Anything ending in _cy is the Welsh version, used on hotdaw.gs/cy/.
+# The band text promoters can copy (bio) is in band.yml.
+
+handle: "@hotdawgassassins"   # what promoters should tag; links to the first link in band.yml
+
+items:
+  - file: hot-dawg-assassins-poster-a4.jpg
+    preview: poster-a4.jpg
+    title: Poster
+    title_cy: Poster
+    note: A4, ready to print, with space at the bottom for your date and venue.
+    note_cy: A4, yn barod i'w argraffu, gyda lle ar y gwaelod i'ch dyddiad a'ch lleoliad.
+    size: 2480 × 3508
+
+  - file: hot-dawg-assassins-poster-a4-photo.jpg
+    preview: poster-a4-photo.jpg
+    title: Poster with a band photo
+    title_cy: Poster gyda llun o'r band
+    note: A4, ready to print, with space at the bottom for your date and venue.
+    note_cy: A4, yn barod i'w argraffu, gyda lle ar y gwaelod i'ch dyddiad a'ch lleoliad.
+    size: 2480 × 3508
+
+  - file: hot-dawg-assassins-event-cover.jpg
+    preview: event-cover.jpg
+    title: Facebook event cover
+    title_cy: Clawr digwyddiad Facebook
+    note: The size Facebook uses for event pages.
+    note_cy: Y maint mae Facebook yn ei ddefnyddio ar gyfer tudalennau digwyddiadau.
+    size: 1920 × 1005
+
+  - file: hot-dawg-assassins-square.jpg
+    preview: square.jpg
+    title: Square post
+    title_cy: Post sgwâr
+    note: For Instagram and Facebook posts.
+    note_cy: Ar gyfer postiau Instagram a Facebook.
+    size: 1080 × 1080
+
+  - file: hot-dawg-assassins-story.jpg
+    preview: story.jpg
+    title: Instagram story
+    title_cy: Stori Instagram
+    note: Room at the top for your date and venue.
+    note_cy: Lle ar y brig i'ch dyddiad a'ch lleoliad.
+    size: 1080 × 1920

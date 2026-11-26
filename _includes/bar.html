@@ -1,0 +1,18 @@
+{%- comment -%}
+  The slim bar that slides in at the top once the page's big header has scrolled away
+  (assets/site.js). Without JavaScript it stays hidden and the header does the job.
+{%- endcomment -%}
+  <div class="bar" id="bar">
+    <div class="wrap bar-inner">
+      <a class="bar-name" href="{{ home_url }}">{{ band.name }}</a>
+      <nav aria-label="{{ t.nav_label }}">
+        <ul class="bar-links">
+          <li><a href="{{ home_url }}#gigs">{{ t.gigs }}</a></li>
+          {%- if band.videos.size > 0 %}
+          <li class="bar-optional"><a href="{{ home_url }}#watch">{{ t.watch }}</a></li>
+          {%- endif %}
+          <li><a class="bar-book" href="{{ home_url }}#book">{{ t.book }}</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>

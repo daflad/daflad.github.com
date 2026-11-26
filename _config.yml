@@ -5,3 +5,12 @@ url: https://hotdaw.gs
 
 exclude:
   - README.md
+  # Browser tests, not part of the site.
+  - package.json
+  - package-lock.json
+  - playwright.config.js
+  - tests
+  - test-results
+  - node_modules
+  # Tools for making the site's images (see tools/README.md).
+  - tools

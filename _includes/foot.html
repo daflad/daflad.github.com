@@ -1,0 +1,36 @@
+{%- comment -%}
+  The footer, photo viewer and script every page shares.
+{%- endcomment -%}
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p class="footer-name">{{ band.name }}</p>
+      <ul class="footer-links">
+        {%- for l in band.links %}
+        <li><a href="{{ l.url }}">{{ l.name }}</a></li>
+        {%- endfor %}
+        <li><a href="mailto:{{ band.email }}">{{ t.email }}</a></li>
+        {%- if promo.items.size > 0 and page.layout != "promo" %}
+        <li><a href="{{ promo_url }}">{{ t.promo }}</a></li>
+        {%- endif %}
+        <li><a href="{{ other_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}">{{ t.switch_label }}</a></li>
+      </ul>
+      <p class="footer-small">© {{ site.time | date: '%Y' }} {{ band.name }}</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="{{ t.viewer }}">
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" alt="">
+      <figcaption class="lightbox-caption" data-lb-caption></figcaption>
+    </figure>
+    <div class="lightbox-bar">
+      <button class="btn" type="button" data-lb="prev">{{ t.previous }}</button>
+      <span class="lightbox-count" data-lb-count></span>
+      <button class="btn" type="button" data-lb="next">{{ t.next }}</button>
+      <a class="btn" href="#" data-lb="download" download>{{ t.download }}</a>
+      <button class="btn" type="button" data-lb="close">{{ t.close }}</button>
+    </div>
+  </dialog>
+
+  <p class="visually-hidden" id="status" aria-live="polite"></p>
+  <script src="{{ '/assets/site.js' | relative_url }}"></script>

@@ -1,0 +1,11 @@
+{
+  "name": "hotdaw-gs",
+  "private": true,
+  "description": "Browser checks for hotdaw.gs. The site itself is plain Jekyll; this is only for testing.",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
+  }
+}

@@ -7,9 +7,28 @@ name: Hot Dawg Assassins
 tagline: Folk, hip-hop & rock from Bangor, North Wales
 tagline_cy: Gwerin, hip-hop a roc o Fangor, Gogledd Cymru
 
+# A couple of lines under the tagline at the top of the home page.
+intro: >-
+  We've been playing pubs, clubs and festivals around North Wales since 2011, mostly in and
+  around Bangor.
+intro_cy: >-
+  Rydyn ni wedi bod yn chwarae mewn tafarndai, clybiau a gwyliau ledled Gogledd Cymru ers 2011,
+  ym Mangor a'r cyffiniau gan fwyaf.
+
 # Shown in Google results and in link previews on WhatsApp, Facebook, etc.
 description: Hot Dawg Assassins are a folk, hip-hop and rock band from Bangor, North Wales. Gig dates, videos and booking details.
 description_cy: Band gwerin, hip-hop a roc o Fangor, Gogledd Cymru yw Hot Dawg Assassins. Dyddiadau gigiau, fideos a manylion bwcio.
+
+# A few lines about the band for event listings and the press, under "Promo kit",
+# with a Copy button. Keep it to facts; the quote is from the first review below.
+bio: >-
+  Hot Dawg Assassins are a folk, hip-hop and rock band from Bangor, North Wales, playing
+  pubs, clubs and festivals since 2011. “Funny and biting, traditional yet contemporary”
+  (link2wales).
+bio_cy: >-
+  Band gwerin, hip-hop a roc o Fangor, Gogledd Cymru yw Hot Dawg Assassins, yn chwarae mewn
+  tafarndai, clybiau a gwyliau ers 2011. “Funny and biting, traditional yet contemporary”
+  (link2wales).
 
 # Where booking enquiries go. This address is shown publicly on the site.
 email: info@hotdaw.gs

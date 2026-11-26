@@ -1,0 +1,25 @@
+{%- comment -%}
+  The past gigs page: past-gigs/index.html (English) and cy/past-gigs/index.html (Welsh).
+  The list itself is _includes/past-gigs.html; gigs are in _data/gigs.yml.
+{%- endcomment -%}
+{%- include setup.html -%}
+<!doctype html>
+<html lang="{{ t.html_lang }}" data-band="{{ band.name | escape }}">
+<head>
+  {%- capture head_title %}{{ t.past }} | {{ band.name }}{% endcapture %}
+  {% include head.html title=head_title description=t.past_description %}
+</head>
+<body>
+  {% include bar.html %}
+  {% include page-head.html title=t.past photo="header-past.jpg" %}
+
+  <main>
+    <section class="section wrap" id="past" aria-labelledby="page-title">
+      {% include past-gigs.html %}
+      <p class="past-link"><a class="btn" href="{{ home_url }}#gigs">{{ t.upcoming_link }}</a></p>
+    </section>
+  </main>
+
+  {% include foot.html %}
+</body>
+</html>

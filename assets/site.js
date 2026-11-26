@@ -1,5 +1,18 @@
-// Splits gigs into upcoming and past using today's date, fills in the
-// "Next gig" line, and handles the Add to calendar and Share buttons.
+// Past gigs page: gigs still to come when the site was last published are in the list,
+// hidden. Show the ones whose date has passed since.
+(function () {
+  "use strict";
+  var pastList = document.getElementById("past-list");
+  if (!pastList) return;
+  var today = new Date();
+  var iso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+  Array.prototype.forEach.call(pastList.querySelectorAll(".gig[hidden]"), function (gig) {
+    if (gig.getAttribute("data-date") < iso) gig.hidden = false;
+  });
+})();
+
+// Home page: hides upcoming gigs that have passed since the site was last published,
+// fills in the "Next gig" line, and handles the Add to calendar and Share buttons.
 (function () {
   "use strict";
 
@@ -7,8 +20,6 @@
   var upcoming = document.getElementById("upcoming");
   if (!upcoming) return;
 
-  var pastWrap = document.getElementById("past");
-  var pastList = document.getElementById("past-list");
   var empty = document.getElementById("gigs-empty");
   var nextGig = document.getElementById("next-gig");
   var status = document.getElementById("status");
@@ -25,10 +36,10 @@
 
   Array.prototype.slice.call(upcoming.children).forEach(function (gig) {
     var date = gig.getAttribute("data-date");
-    // Played since the site was last published: move it to the top of Past gigs.
-    // Upcoming is oldest first, so each one goes above the last.
+    // Played since the site was last published: take it off the upcoming list.
+    // (The past gigs page shows it.)
     if (date < today) {
-      pastList.insertBefore(gig, pastList.firstElementChild);
+      gig.remove();
       return;
     }
     if (date.slice(0, 4) !== thisYear) gig.classList.add("show-year");
@@ -37,8 +48,6 @@
       item.hidden = false;
     });
   });
-
-  pastWrap.hidden = !pastList.firstElementChild;
 
   var first = upcoming.firstElementChild;
   upcoming.hidden = !first;
@@ -237,4 +246,58 @@
     img.removeAttribute("src");
     if (opener) opener.focus();
   });
+})();
+
+// Book us: the light on the face comes up as the section scrolls into view.
+// Without JavaScript, or for people who ask for less motion, it is simply lit.
+(function () {
+  var book = document.getElementById("book");
+  if (!book || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (book.getBoundingClientRect().top < window.innerHeight) return; // already on screen
+
+  book.classList.add("lights-down");
+  var watcher = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    book.classList.remove("lights-down");
+    watcher.disconnect();
+  }, { threshold: 0.3 });
+  watcher.observe(book);
+})();
+
+// Promo kit: "Copy" buttons put the band text on the clipboard.
+(function () {
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest("[data-copy]");
+    if (!button) return;
+    var source = document.getElementById(button.getAttribute("data-copy"));
+    if (!source) return;
+    var label = button.textContent;
+
+    function selectText() {
+      // If the clipboard isn't available, select the text so it can be copied by hand.
+      var range = document.createRange();
+      range.selectNodeContents(source);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return selectText();
+    navigator.clipboard.writeText(source.textContent.trim()).then(function () {
+      button.textContent = button.getAttribute("data-done");
+      setTimeout(function () { button.textContent = label; }, 2000);
+    }, selectText);
+  });
+})();
+
+// The slim bar slides in once the page's big header has scrolled out of view,
+// and hides again when you scroll back up to it.
+(function () {
+  var bar = document.getElementById("bar");
+  var header = document.querySelector(".masthead");
+  if (!bar || !header || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function (entries) {
+    bar.classList.toggle("is-shown", !entries[0].isIntersecting);
+  }).observe(header);
 })();

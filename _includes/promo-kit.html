@@ -1,0 +1,68 @@
+{%- comment -%}
+  The promo kit, on its own page (layout promo.html). Files and their wording are in
+  _data/promo.yml; the band text (bio) is in band.yml.
+{%- endcomment -%}
+<section class="section wrap" id="promo" aria-labelledby="page-title">
+  {%- capture handle_link %}<a href="{{ band.links[0].url }}">{{ promo.handle }}</a>{% endcapture %}
+  {%- capture photos_url %}{{ home_url }}#photos{% endcapture %}
+  <p class="promo-intro">{{ t.promo_intro | replace: "[handle]", handle_link }} {{ t.promo_photos | replace: "[url]", photos_url }}</p>
+
+  <ul class="promo-grid">
+    {%- for item in promo.items %}
+    {%- assign title = item.title %}{% if cy and item.title_cy %}{% assign title = item.title_cy %}{% endif %}
+    {%- assign note = item.note %}{% if cy and item.note_cy %}{% assign note = item.note_cy %}{% endif %}
+    <li class="promo-item">
+      <a class="promo-preview" href="{{ promo_dir }}{{ item.file }}" data-group="promo" data-caption="{{ title | escape }}" data-download="{{ item.file }}"><img src="{{ promo_dir }}thumbs/{{ item.preview }}" loading="lazy" alt="{{ title | escape }}"></a>
+      <h2 class="promo-title">{{ title }}</h2>
+      <p class="promo-note">{{ note }}</p>
+      <p class="promo-meta">{{ item.size }} {{ t.pixels }}, JPG</p>
+      <a class="btn" href="{{ promo_dir }}{{ item.file }}" download>{{ t.download }}</a>
+    </li>
+    {%- endfor %}
+    <li class="promo-item">
+      <div class="promo-preview promo-logos">
+        <span class="on-dark"><img src="{{ promo_dir }}hot-dawg-assassins-logo-stacked-light.svg" alt="{{ band.name }} {{ t.logo }}, {{ t.light }}"></span>
+        <span class="on-light"><img src="{{ promo_dir }}hot-dawg-assassins-logo-stacked-dark.svg" alt="{{ band.name }} {{ t.logo }}, {{ t.dark }}"></span>
+      </div>
+      <h2 class="promo-title">{{ t.logo }}</h2>
+      <p class="promo-note">{{ t.logo_note }}</p>
+      <dl class="logo-files">
+        {%- for v in (1..4) %}
+        {%- if v <= 2 %}{% assign shape = "" %}{% assign shape_label = t.logo_one_line %}{% else %}{% assign shape = "-stacked" %}{% assign shape_label = t.logo_stacked %}{% endif %}
+        {%- assign mod = v | modulo: 2 %}
+        {%- if mod == 1 %}{% assign tone = "light" %}{% assign tone_label = t.light %}{% else %}{% assign tone = "dark" %}{% assign tone_label = t.dark %}{% endif %}
+        {%- capture base %}{{ promo_dir }}hot-dawg-assassins-logo{{ shape }}-{{ tone }}{% endcapture %}
+        <div><dt>{{ shape_label }}, {{ tone_label }}</dt><dd><a href="{{ base }}.png" download>PNG</a> <a href="{{ base }}.svg" download>SVG</a></dd></div>
+        {%- endfor %}
+      </dl>
+    </li>
+  </ul>
+
+  <div class="promo-more">
+    <div>
+      <h2 class="promo-subtitle">{{ t.about }}</h2>
+      <p class="promo-note">{{ t.about_note }}</p>
+      <div class="copy-block">
+        <p class="copy-label">{{ t.in_a_line }}</p>
+        <p class="copy-text" id="copy-line">{{ tagline }}</p>
+        <button class="btn" type="button" data-copy="copy-line" data-done="{{ t.copied }}">{{ t.copy }}</button>
+      </div>
+      {%- if bio %}
+      <div class="copy-block">
+        <p class="copy-label">{{ t.short_bio }}</p>
+        <p class="copy-text" id="copy-bio">{{ bio }}</p>
+        <button class="btn" type="button" data-copy="copy-bio" data-done="{{ t.copied }}">{{ t.copy }}</button>
+      </div>
+      {%- endif %}
+    </div>
+    <div>
+      <h2 class="promo-subtitle">{{ t.brand }}</h2>
+      {%- capture font_link %}<a href="https://fonts.google.com/specimen/Archivo" lang="en">Archivo</a>{% endcapture %}
+      <p class="promo-note">{{ t.font_note | replace: "[font]", font_link }}</p>
+      <ul class="swatches">
+        <li><span class="swatch" style="background: #161412"></span>{{ t.black }} <code>#161412</code></li>
+        <li><span class="swatch" style="background: #eee9e1"></span>{{ t.cream }} <code>#EEE9E1</code></li>
+      </ul>
+    </div>
+  </div>
+</section>

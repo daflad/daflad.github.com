@@ -1,0 +1,51 @@
+{%- comment -%}
+  The past gigs list, on its own page (layout past-gigs.html). Newest first.
+  Gigs still to come are in the list too, hidden: assets/site.js shows each one once its
+  date has passed, so the list stays right between site updates.
+{%- endcomment -%}
+{%- assign first_gig = gigs | first %}
+{%- if first_gig %}
+{%- assign first_year = first_gig.date | date: '%Y' %}
+<p class="past-intro">{{ t.past_intro | replace: "[year]", first_year }}</p>
+{%- endif %}
+<ol class="gigs gigs-past" id="past-list">
+  {%- for gig in gigs reversed %}
+  {%- assign iso = gig.date | date: '%Y-%m-%d' %}
+  {%- assign venue = gig.venue %}{% if cy and gig.venue_cy %}{% assign venue = gig.venue_cy %}{% endif %}
+  {%- assign town = gig.town %}{% if cy and gig.town_cy %}{% assign town = gig.town_cy %}{% endif %}
+  {%- assign notes = gig.notes %}{% if cy and gig.notes_cy %}{% assign notes = gig.notes_cy %}{% endif %}
+  <li class="gig" data-date="{{ iso }}"{% if iso >= today %} hidden{% endif %}>
+    <time class="gig-date" datetime="{{ iso }}"><span class="gig-dm">{% include date.html date=gig.date format="dm" %}</span> <span class="gig-year">{{ gig.date | date: '%Y' }}</span></time>
+    <div class="gig-where">
+      <p class="gig-venue">{{ venue }}</p>
+      {%- if town %}
+      <p class="gig-town">{{ town }}</p>
+      {%- endif %}
+      {%- if notes %}
+      <p class="gig-notes">{{ notes }}</p>
+      {%- endif %}
+      {%- if gig.flyer or gig.photos.size > 0 %}
+      {%- capture caption %}{{ venue }}{% if town %}, {{ town }}{% endif %}, {% include date.html date=gig.date format="dmy" %}{% endcapture %}
+      <ul class="gig-photos">
+        {%- if gig.flyer %}
+        {%- assign thumb_path = "/images/thumbs/" | append: gig.flyer %}
+        {%- assign thumb = site.static_files | where: "path", thumb_path | first %}
+        {%- assign alt = t.flyer_alt | replace: "[caption]", caption %}
+        <li class="gig-flyer"><a href="{{ img }}{{ gig.flyer }}" data-group="gig-{{ iso }}" data-caption="{{ caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ gig.flyer }}" width="240" height="340" loading="lazy" alt="{{ alt | escape }}"></a></li>
+        {%- endif %}
+        {%- for photo in gig.photos %}
+        {%- assign thumb_path = "/images/thumbs/" | append: photo %}
+        {%- assign thumb = site.static_files | where: "path", thumb_path | first %}
+        {%- if gig.photos.size > 1 %}
+        {%- assign alt = t.photo_alt_n | replace: "[n]", forloop.index | replace: "[m]", gig.photos.size | replace: "[caption]", caption %}
+        {%- else %}
+        {%- assign alt = t.photo_alt | replace: "[caption]", caption %}
+        {%- endif %}
+        <li><a href="{{ img }}{{ photo }}" data-group="gig-{{ iso }}" data-caption="{{ caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ photo }}" width="360" height="240" loading="lazy" alt="{{ alt | escape }}"></a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ol>

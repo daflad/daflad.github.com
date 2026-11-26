@@ -1,0 +1,22 @@
+{%- comment -%}
+  The promo kit page: promo/index.html (English) and cy/promo/index.html (Welsh).
+  The kit itself is _includes/promo-kit.html.
+{%- endcomment -%}
+{%- include setup.html -%}
+<!doctype html>
+<html lang="{{ t.html_lang }}" data-band="{{ band.name | escape }}">
+<head>
+  {%- capture head_title %}{{ t.promo }} | {{ band.name }}{% endcapture %}
+  {% include head.html title=head_title description=t.promo_description %}
+</head>
+<body>
+  {% include bar.html %}
+  {% include page-head.html title=t.promo face=true %}
+
+  <main>
+{% include promo-kit.html %}
+  </main>
+
+  {% include foot.html %}
+</body>
+</html>

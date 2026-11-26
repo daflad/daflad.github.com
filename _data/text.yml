@@ -7,7 +7,6 @@ en:
   og_locale: en_GB
   switch_label: Cymraeg
   switch_lang: cy
-  switch_url: /cy/
   nav_label: Main
   gigs: Gigs
   watch: Watch
@@ -25,6 +24,11 @@ en:
     Follow us on <a href="[url]">Instagram</a> to hear about new gigs.
   past: Past gigs
   past_intro: A handful of the gigs we've played since [year].
+  past_description: A handful of the gigs Hot Dawg Assassins have played since 2011, with flyers and photos.
+  upcoming_link: Upcoming gigs
+  promo_description: Posters, social images, logos and band text for promoters. Free to use.
+  promo_photos: >-
+    There are more photos on our <a href="[url]">main page</a>.
   photo_alt: Photo from [caption]
   photo_alt_n: Photo [n] of [m] from [caption]
   flyer_alt: Flyer for [caption]
@@ -39,8 +43,34 @@ en:
   or_write_to: Or write to
   or_call: or call
   book_posters: >-
-    For posters, use any of our <a href="#photos">photos</a>.
+    For posters and event pages, use our <a href="[url]">promo kit</a>.
   email: Email
+  promo: Promo kit
+  promo_intro: >-
+    Everything you need to put us on a poster, an event page or a social post. Free to use.
+    Tag us on Instagram: [handle].
+  pixels: px
+  open: Open
+  logo: Logo
+  logo_note: >-
+    Transparent background, so it sits on any picture. Light for dark backgrounds, dark for
+    light ones. PNG for most things, SVG for designers.
+  logo_one_line: One line
+  logo_stacked: Two lines
+  light: light
+  dark: dark
+  about: About us
+  about_note: For event listings and the press.
+  in_a_line: In a line
+  short_bio: Short bio
+  copy: Copy
+  copied: Copied
+  brand: Font and colours
+  font_note: >-
+    The band name is in [font] at its narrowest and heaviest (Extra Condensed Black), in
+    capitals. It's free from Google Fonts.
+  black: Black
+  cream: Cream
   viewer: Photo viewer
   previous: Previous
   next: Next
@@ -52,7 +82,6 @@ cy:
   og_locale: cy_GB
   switch_label: English
   switch_lang: en
-  switch_url: /
   nav_label: Prif ddewislen
   gigs: Gigiau
   watch: Gwylio
@@ -71,6 +100,11 @@ cy:
     Dilynwch ni ar <a href="[url]">Instagram</a> i glywed am gigiau newydd.
   past: Gigiau blaenorol
   past_intro: Llond llaw o'r gigiau rydyn ni wedi'u chwarae ers [year].
+  past_description: Llond llaw o'r gigiau mae Hot Dawg Assassins wedi'u chwarae ers 2011, gyda phosteri a lluniau.
+  upcoming_link: Gigiau i ddod
+  promo_description: Posteri, delweddau cymdeithasol, logos a thestun am y band i hyrwyddwyr. Mae croeso i chi eu defnyddio.
+  promo_photos: >-
+    Mae mwy o luniau ar ein <a href="[url]">prif dudalen</a>.
   photo_alt: "Llun: [caption]"
   photo_alt_n: "Llun [n] o [m]: [caption]"
   flyer_alt: "Poster ar gyfer [caption]"
@@ -86,8 +120,34 @@ cy:
   or_write_to: Neu ysgrifennwch at
   or_call: neu ffoniwch
   book_posters: >-
-    Ar gyfer posteri, defnyddiwch unrhyw un o'n <a href="#photos">lluniau</a>.
+    Ar gyfer posteri a thudalennau digwyddiadau, defnyddiwch ein <a href="[url]">pecyn hyrwyddo</a>.
   email: E-bost
+  promo: Pecyn hyrwyddo
+  promo_intro: >-
+    Popeth sydd ei angen arnoch i'n rhoi ar boster, tudalen digwyddiad neu bost cymdeithasol.
+    Mae croeso i chi eu defnyddio. Tagiwch ni ar Instagram: [handle].
+  pixels: px
+  open: Agor
+  logo: Logo
+  logo_note: >-
+    Cefndir tryloyw, felly mae'n gweithio ar unrhyw lun. Golau ar gyfer cefndiroedd tywyll,
+    tywyll ar gyfer rhai golau. PNG ar gyfer y rhan fwyaf o bethau, SVG i ddylunwyr.
+  logo_one_line: Un llinell
+  logo_stacked: Dwy linell
+  light: golau
+  dark: tywyll
+  about: Amdanom ni
+  about_note: Ar gyfer rhestrau digwyddiadau a'r wasg.
+  in_a_line: Mewn llinell
+  short_bio: Bywgraffiad byr
+  copy: Copïo
+  copied: Wedi'i gopïo
+  brand: Ffont a lliwiau
+  font_note: >-
+    Mae enw'r band mewn [font] ar ei gulaf a'i drymaf (Extra Condensed Black), mewn
+    priflythrennau. Mae am ddim o Google Fonts.
+  black: Du
+  cream: Hufen
   viewer: Gwyliwr lluniau
   previous: Blaenorol
   next: Nesaf

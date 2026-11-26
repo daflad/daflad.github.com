@@ -1,0 +1,24 @@
+{%- comment -%}
+  Shared by every page: picks the page's language and the words and band details for it.
+  A field ending in _cy (in band.yml, gigs.yml, promo.yml) is used on Welsh pages if it's there.
+  Pages can set alt_en and alt_cy to their English and Welsh addresses (default: the home pages).
+{%- endcomment -%}
+{%- assign band = site.data.band -%}
+{%- assign lang = page.lang | default: "en" -%}
+{%- assign t = site.data.text[lang] -%}
+{%- assign cy = false -%}{%- if lang == "cy" -%}{%- assign cy = true -%}{%- endif -%}
+{%- assign img = "/images/" | relative_url -%}
+{%- assign tagline = band.tagline -%}{%- if cy and band.tagline_cy -%}{%- assign tagline = band.tagline_cy -%}{%- endif -%}
+{%- assign description = band.description -%}{%- if cy and band.description_cy -%}{%- assign description = band.description_cy -%}{%- endif -%}
+{%- assign cover_alt = band.cover_alt -%}{%- if cy and band.cover_alt_cy -%}{%- assign cover_alt = band.cover_alt_cy -%}{%- endif -%}
+{%- assign alt_en = page.alt_en | default: "/" -%}
+{%- assign alt_cy = page.alt_cy | default: "/cy/" -%}
+{%- if cy -%}{%- assign other_url = alt_en -%}{%- else -%}{%- assign other_url = alt_cy -%}{%- endif -%}
+{%- if cy -%}{%- assign home_url = "/cy/" | relative_url -%}{%- else -%}{%- assign home_url = "/" | relative_url -%}{%- endif -%}
+{%- assign promo = site.data.promo -%}
+{%- assign promo_dir = "/promo/" | relative_url -%}
+{%- if cy -%}{%- assign promo_url = "/cy/promo/" | relative_url -%}{%- else -%}{%- assign promo_url = "/promo/" | relative_url -%}{%- endif -%}
+{%- if cy -%}{%- assign past_url = "/cy/past-gigs/" | relative_url -%}{%- else -%}{%- assign past_url = "/past-gigs/" | relative_url -%}{%- endif -%}
+{%- assign bio = band.bio -%}{%- if cy and band.bio_cy -%}{%- assign bio = band.bio_cy -%}{%- endif -%}
+{%- if site.data.gigs -%}{%- assign gigs = site.data.gigs | sort: 'date' -%}{%- endif -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}

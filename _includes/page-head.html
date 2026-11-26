@@ -1,0 +1,16 @@
+{%- comment -%}
+  The header on pages other than the home page: a short cover with the page title, the
+  band name (back to the home page) top left and the English / Cymraeg switch top right.
+  Give it title=, and either photo= (a file in images/) or face=true for the lit face
+  from "Book us".
+{%- endcomment -%}
+  <header class="masthead masthead-page{% if include.face %} lit-face{% endif %}">
+    {%- if include.photo %}
+    <div class="masthead-photo"><img src="{{ img }}{{ include.photo }}" width="1128" height="760" alt=""></div>
+    {%- endif %}
+    <a class="home-link" href="{{ home_url }}">{{ band.name }}</a>
+    <a class="lang-switch" href="{{ other_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}">{{ t.switch_label }}</a>
+    <div class="masthead-text wrap">
+      <h1 class="page-title{% if include.face %} face-title{% endif %}" id="page-title">{{ include.title }}</h1>
+    </div>
+  </header>
