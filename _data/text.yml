@@ -1,0 +1,96 @@
+# Words used on the site, in English (en) and Welsh (cy).
+# The band's own details (tagline, gig notes and so on) are in band.yml and gigs.yml.
+# Words in [square brackets] are filled in by the site.
+
+en:
+  html_lang: en-GB
+  og_locale: en_GB
+  switch_label: Cymraeg
+  switch_lang: cy
+  switch_url: /cy/
+  nav_label: Main
+  gigs: Gigs
+  watch: Watch
+  photos: Photos
+  reviews: Reviews
+  book: Book us
+  next_gig: Next gig
+  directions: Directions
+  event_page: Event page
+  add_to_calendar: Add to calendar
+  share: Share
+  empty: >-
+    Nothing booked right now. Want us at your pub or event? <a href="#book">Get in touch</a>.
+  follow: >-
+    Follow us on <a href="[url]">Instagram</a> to hear about new gigs.
+  past: Past gigs
+  past_intro: A handful of the gigs we've played since [year].
+  photo_alt: Photo from [caption]
+  photo_alt_n: Photo [n] of [m] from [caption]
+  photos_help: >-
+    Free to use on posters and social posts. Open a photo to download it, or download
+    the <a href="[cover]" download="hot-dawg-assassins-cover.jpg">cover photo</a>.
+  photos_help_no_cover: Free to use on posters and social posts. Open a photo to download it.
+  book_lead: Send us the date, venue and fee and we'll let you know if we're free.
+  book_button: Email us about a booking
+  book_subject: Booking%20enquiry
+  book_body: Venue%3A%0ATown%3A%0ADate%3A%0ATimes%3A%0AFee%3A%0A
+  or_write_to: Or write to
+  or_call: or call
+  book_posters: >-
+    For posters, use any of our <a href="#photos">photos</a>.
+  email: Email
+  viewer: Photo viewer
+  previous: Previous
+  next: Next
+  download: Download
+  close: Close
+
+cy:
+  html_lang: cy
+  og_locale: cy_GB
+  switch_label: English
+  switch_lang: en
+  switch_url: /
+  nav_label: Prif ddewislen
+  gigs: Gigiau
+  watch: Gwylio
+  photos: Lluniau
+  reviews: Adolygiadau
+  book: Bwciwch ni
+  next_gig: Gig nesaf
+  directions: Cyfarwyddiadau
+  event_page: Tudalen y digwyddiad
+  add_to_calendar: Ychwanegu at y calendr
+  share: Rhannu
+  empty: >-
+    Dim byd wedi'i drefnu ar hyn o bryd. Hoffech chi ein cael ni yn eich tafarn neu'ch
+    digwyddiad? <a href="#book">Cysylltwch â ni</a>.
+  follow: >-
+    Dilynwch ni ar <a href="[url]">Instagram</a> i glywed am gigiau newydd.
+  past: Gigiau blaenorol
+  past_intro: Llond llaw o'r gigiau rydyn ni wedi'u chwarae ers [year].
+  photo_alt: "Llun: [caption]"
+  photo_alt_n: "Llun [n] o [m]: [caption]"
+  photos_help: >-
+    Mae croeso i chi eu defnyddio ar bosteri a'r cyfryngau cymdeithasol. Agorwch lun i'w
+    lawrlwytho, neu lawrlwythwch y <a href="[cover]" download="hot-dawg-assassins-cover.jpg">prif lun</a>.
+  photos_help_no_cover: >-
+    Mae croeso i chi eu defnyddio ar bosteri a'r cyfryngau cymdeithasol. Agorwch lun i'w lawrlwytho.
+  book_lead: Anfonwch y dyddiad, y lleoliad a'r ffi aton ni a byddwn ni'n rhoi gwybod a ydyn ni ar gael.
+  book_button: E-bostiwch ni i fwcio
+  book_subject: Ymholiad%20bwcio
+  book_body: Lleoliad%3A%0ATref%3A%0ADyddiad%3A%0AAmseroedd%3A%0AFfi%3A%0A
+  or_write_to: Neu ysgrifennwch at
+  or_call: neu ffoniwch
+  book_posters: >-
+    Ar gyfer posteri, defnyddiwch unrhyw un o'n <a href="#photos">lluniau</a>.
+  email: E-bost
+  viewer: Gwyliwr lluniau
+  previous: Blaenorol
+  next: Nesaf
+  download: Lawrlwytho
+  close: Cau
+  # Short day and month names, Sunday first.
+  days: [Sul, Llun, Maw, Mer, Iau, Gwe, Sad]
+  months: [Ion, Chwef, Maw, Ebr, Mai, Meh, Gorff, Awst, Medi, Hyd, Tach, Rhag]

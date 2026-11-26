@@ -1,0 +1,101 @@
+# Gigs, past and future. Add one block per gig, in any order. The site sorts them by date.
+# Future gigs are listed under "Gigs". Once a gig's date has passed it moves to
+# "Past gigs" by itself.
+#
+# Copy the block below, remove the # from each line, and fill it in.
+# Only date and venue are required. Add the town too for future gigs, so the
+# Directions button finds the right place.
+#
+# For the Welsh page (hotdaw.gs/cy/) you can add venue_cy, town_cy and notes_cy.
+# Without them the Welsh page shows the English.
+#
+# - date: 2026-12-06              # year-month-day
+#   venue: The Belle Vue
+#   town: Bangor
+#   time: 9pm                     # write it as 9pm, 8:30pm or 21:00
+#   price: Free entry             # or "£5 on the door", etc.
+#   link: https://...             # Facebook event, tickets or venue page
+#   link_text: Tickets            # button label for the link, default "Event page"
+#   notes: Support from ...       # one short line
+#   notes_cy: Yn cefnogi ...      # the notes in Welsh, for the Welsh page (optional)
+#   photos:                       # optional, for past gigs: photos in the images folder,
+#     - Skerries.jpg              # shown as small pictures you can tap to see full size
+
+
+# Past gigs
+
+- date: 2026-11-21
+  venue: Bonnie Pilgrim Winterwell Launch Party
+  venue_cy: Parti Lansio Winterwell Bonnie Pilgrim
+  town: YHA Llanberis
+
+- date: 2023-12-14
+  venue: Winter Folk
+  town: YHA Llanberis
+  notes: With Bonnie Pilgrim
+  notes_cy: Gyda Bonnie Pilgrim
+
+- date: 2016-09-19
+  venue: The Skerries
+  town: Bangor
+  notes: With Rabo de Toro and A Devil's Din
+  notes_cy: Gyda Rabo de Toro ac A Devil's Din
+  photos:
+    - Skerries.jpg
+
+- date: 2015-08-20
+  venue: Crosville Club
+  town: Bangor
+  notes: With Shoshin and Doll Circus
+  notes_cy: Gyda Shoshin a Doll Circus
+
+- date: 2015-03-02              # the date one of the photos was taken
+  venue: Blue Sky Café
+  town: Bangor
+  photos:
+    - BlueSky.jpg
+
+- date: 2015-05-29
+  venue: The Belle Vue
+  town: Bangor
+  notes: Curiad Bangor Pulse festival
+  notes_cy: Gŵyl Curiad Bangor Pulse
+
+- date: 2014-06-06
+  venue: Awareness Festival
+  venue_cy: Gŵyl Awareness
+  town: Faenol Estate, Bangor
+  town_cy: Ystad y Faenol, Bangor
+
+- date: 2014-01-24
+  venue: Tan Y Coed Hotel
+  town: Capel Curig
+
+- date: 2012-06-03              # the Daily Post preview put local acts on the Sunday
+  venue: Kaya Festival
+  venue_cy: Gŵyl Kaya
+  town: Faenol Estate, Bangor
+  town_cy: Ystad y Faenol, Bangor
+  photos:
+    - kaya_large.jpg
+
+- date: 2011-11-30
+  venue: Heights
+  town: Llanberis
+  notes: First gig
+  notes_cy: Gig cyntaf
+
+# Found online but not confirmed. Remove the # from a block if you did play it.
+#
+# The 2015 site also listed the Skerries and Tŷ Gwydr on 30 May, and the Skerries,
+# the Crossville Club and Tŷ Gwydr on 31 May, for Curiad Bangor Pulse.
+#
+# - date: 2015-09-XX              # late September 2015; put in the day
+#   venue: The Skerries
+#   town: Bangor
+#   notes: Supporting Milo, with Velvet
+#
+# - date: 2015-06-XX              # Daily Post listing, June 2015; put in the day
+#   venue: The Victoria Hotel
+#   town: Menai Bridge
+#   notes: With Cane Toads and Dan Amor

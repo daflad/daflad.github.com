@@ -1,0 +1,18 @@
+{%- comment -%}
+  Prints a gig date in the page's language.
+  format: day (Sat), dm (6 Dec) or dmy (6 Dec 2026)
+{%- endcomment -%}
+{%- assign d = include.date -%}
+{%- if page.lang == "cy" -%}
+  {%- assign month = d | date: "%-m" | minus: 1 -%}
+  {%- assign weekday = d | date: "%w" | plus: 0 -%}
+  {%- if include.format == "day" -%}{{ site.data.text.cy.days[weekday] }}
+  {%- elsif include.format == "dm" -%}{{ d | date: "%-d" }} {{ site.data.text.cy.months[month] }}
+  {%- else -%}{{ d | date: "%-d" }} {{ site.data.text.cy.months[month] }} {{ d | date: "%Y" }}
+  {%- endif -%}
+{%- else -%}
+  {%- if include.format == "day" -%}{{ d | date: "%a" }}
+  {%- elsif include.format == "dm" -%}{{ d | date: "%-d %b" }}
+  {%- else -%}{{ d | date: "%-d %b %Y" }}
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,79 @@
+# Band details shown on the site.
+# Edit on GitHub, commit, and the site updates itself within a minute or two.
+# Anything ending in _cy is the Welsh version, used on hotdaw.gs/cy/. If it's missing,
+# the Welsh page uses the English.
+
+name: Hot Dawg Assassins
+tagline: Folk, hip-hop & rock from Bangor, North Wales
+tagline_cy: Gwerin, hip-hop a roc o Fangor, Gogledd Cymru
+
+# Shown in Google results and in link previews on WhatsApp, Facebook, etc.
+description: Hot Dawg Assassins are a folk, hip-hop and rock band from Bangor, North Wales. Gig dates, videos and booking details.
+description_cy: Band gwerin, hip-hop a roc o Fangor, Gogledd Cymru yw Hot Dawg Assassins. Dyddiadau gigiau, fideos a manylion bwcio.
+
+# Where booking enquiries go. This address is shown publicly on the site.
+email: info@hotdaw.gs
+phone:   # optional, e.g. 07700 900123
+
+# Social links, shown in the footer. The first one also goes in the top menu.
+links:
+  - name: Instagram
+    url: https://www.instagram.com/hotdawgassassins
+  - name: YouTube
+    url: https://www.youtube.com/@hotdawgassassins
+  # - name: Facebook
+  #   url: https://www.facebook.com/hotdawgassassins
+
+# Videos shown under "Watch". The id is the part after "watch?v=" in a YouTube link.
+videos:
+  - id: FeOqLmcMsfE
+    title: Nettle Man
+
+# Photos shown under "Photos", free for anyone to use on posters. Files go in the images folder.
+# width and height are the photo's size in pixels (Get Info on a Mac shows them).
+photos_intro: From the Bonnie Pilgrim Winterwell launch party at YHA Llanberis, November 2026.
+photos_intro_cy: O barti lansio Winterwell Bonnie Pilgrim yn YHA Llanberis, Tachwedd 2026.
+photos:
+  - file: 43CB0E43-03DF-4D48-A626-53B173A7F8FD.jpg
+    width: 1200
+    height: 1600
+    alt: Long-haired guitarist playing an acoustic guitar
+    alt_cy: Gitarydd gwallt hir yn chwarae gitâr acwstig
+  - file: DC46CD5D-4FD7-47C1-AB1A-8DFCFB544BC4.jpg
+    width: 1128
+    height: 1525
+    alt: The band playing, seen from the audience
+    alt_cy: Y band yn chwarae, o ganol y gynulleidfa
+  - file: FF4F86F6-4AA3-4402-A68C-E52A3677D055.jpg
+    width: 1325
+    height: 1200
+    alt: The singer in a patterned hood, singing into a microphone
+    alt_cy: Y canwr mewn cwfl patrymog yn canu i'r meicroffon
+
+# The cover photo at the top of the page, offered as a download under "Photos".
+# The cropped versions on the page are images/cover-wide.jpg and images/cover-mobile.jpg.
+cover_photo: 4642D018-1141-4687-A579-C6F7432E86A8.jpg
+cover_alt: Hot Dawg Assassins playing at the Winterwell launch party at YHA Llanberis
+cover_alt_cy: Hot Dawg Assassins yn chwarae ym mharti lansio Winterwell yn YHA Llanberis
+
+# Quotes from reviews, shown in the "Reviews" section. Only real quotes, linked to the source.
+reviews:
+  - quote: Funny and biting, traditional yet contemporary, the Hot Dawg Assassins have a uniqueness which is something you have to experience.
+    source: link2wales
+    gig: Crosville Club, Bangor
+    date: August 2015
+    date_cy: Awst 2015
+    url: https://link2wales.co.uk/2015/gigreviews/shoshin-doll-circus-hot-dawg-assassins-crosville-club-bangor/
+  - quote: Genuinely entertaining and had me smiling broadly.
+    source: link2wales
+    gig: The Skerries, Bangor
+    date: September 2016
+    date_cy: Medi 2016
+    url: https://link2wales.co.uk/2016/latest-news/rabo-de-toro-a-devils-din-hot-dawg-assassins-the-skerries-bangor/
+
+# Short facts for landlords and promoters, listed under "Book us".
+# Remove the # to use a line. Leave them all commented out to hide the list.
+booking_facts:
+  # - Five-piece: vocals, guitars, bass, drums and fiddle
+  # - We bring our own PA
+  # - Two 45-minute sets, or one 90-minute set

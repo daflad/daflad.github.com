@@ -1,0 +1,315 @@
+{%- comment -%}
+  The whole site. index.html (English) and cy/index.html (Welsh) both use this layout.
+  Interface words come from _data/text.yml; band details from band.yml and gigs.yml,
+  where a field ending in _cy is used on the Welsh page if it's there.
+{%- endcomment -%}
+{%- assign band = site.data.band -%}
+{%- assign lang = page.lang | default: "en" -%}
+{%- assign t = site.data.text[lang] -%}
+{%- assign cy = false -%}{%- if lang == "cy" -%}{%- assign cy = true -%}{%- endif -%}
+{%- assign img = "/images/" | relative_url -%}
+{%- assign tagline = band.tagline -%}{%- if cy and band.tagline_cy -%}{%- assign tagline = band.tagline_cy -%}{%- endif -%}
+{%- assign description = band.description -%}{%- if cy and band.description_cy -%}{%- assign description = band.description_cy -%}{%- endif -%}
+{%- assign cover_alt = band.cover_alt -%}{%- if cy and band.cover_alt_cy -%}{%- assign cover_alt = band.cover_alt_cy -%}{%- endif -%}
+{%- assign photos_intro = band.photos_intro -%}{%- if cy and band.photos_intro_cy -%}{%- assign photos_intro = band.photos_intro_cy -%}{%- endif -%}
+{%- if site.data.gigs -%}{%- assign gigs = site.data.gigs | sort: 'date' -%}{%- endif -%}
+{%- comment -%} Split at build time; assets/site.js moves gigs that have passed since. {%- endcomment -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
+{%- assign upcoming_count = 0 -%}{%- assign past_count = 0 -%}
+{%- for gig in gigs -%}
+{%- assign iso = gig.date | date: '%Y-%m-%d' -%}
+{%- if iso >= today -%}{%- assign upcoming_count = upcoming_count | plus: 1 -%}{%- else -%}{%- assign past_count = past_count | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+<!doctype html>
+<html lang="{{ t.html_lang }}" data-band="{{ band.name | escape }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ band.name }} | {{ tagline | escape }}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="en-GB" href="{{ site.url }}/">
+  <link rel="alternate" hreflang="cy" href="{{ site.url }}/cy/">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+  <meta name="theme-color" content="#161412">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ t.og_locale }}">
+  <meta property="og:site_name" content="{{ band.name | escape }}">
+  <meta property="og:title" content="{{ band.name | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/images/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ cover_alt | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": {{ band.name | jsonify }},
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/images/share.jpg",
+    "description": {{ description | jsonify }},
+    "sameAs": [{% for l in band.links %}{{ l.url | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+  }
+  </script>
+  {%- unless cy %}
+  {%- comment -%} Gig listings for search engines, on the English page only so they aren't listed twice. {%- endcomment -%}
+  {%- for gig in gigs %}
+  {%- assign iso = gig.date | date: '%Y-%m-%d' %}
+  {%- if iso >= today %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicEvent",
+      "name": {{ band.name | append: " at " | append: gig.venue | jsonify }},
+      "startDate": "{{ iso }}",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": {{ gig.venue | jsonify }},
+        "address": { "@type": "PostalAddress",{% if gig.town %} "addressLocality": {{ gig.town | jsonify }},{% endif %} "addressCountry": "GB" }
+      },
+      "performer": { "@type": "MusicGroup", "name": {{ band.name | jsonify }}, "url": "{{ site.url }}/" }
+      {%- if gig.link %},
+      "url": {{ gig.link | jsonify }}
+      {%- endif %}
+    }
+  </script>
+  {%- endif %}
+  {%- endfor %}
+  {%- endunless %}
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-photo">
+      <picture>
+        <source media="(max-width: 699px)" srcset="{{ img }}cover-mobile.jpg" width="1232" height="924">
+        <img src="{{ img }}cover-wide.jpg" width="1566" height="734" alt="{{ cover_alt | escape }}">
+      </picture>
+    </div>
+    <a class="lang-switch" href="{{ t.switch_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}">{{ t.switch_label }}</a>
+    <div class="masthead-text wrap">
+      <h1 class="band-name">{{ band.name }}</h1>
+      <p class="tagline">{{ tagline }}</p>
+      <p class="next-gig" id="next-gig" hidden>{{ t.next_gig }} <a href="#gigs"></a></p>
+      <nav aria-label="{{ t.nav_label }}">
+        <ul class="nav">
+          <li><a href="#gigs">{{ t.gigs }}</a></li>
+          {%- if band.videos.size > 0 %}
+          <li><a href="#watch">{{ t.watch }}</a></li>
+          {%- endif %}
+          <li><a href="#book">{{ t.book }}</a></li>
+          {%- assign main_link = band.links | first %}
+          {%- if main_link %}
+          <li><a href="{{ main_link.url }}">{{ main_link.name }}</a></li>
+          {%- endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section wrap" id="gigs" aria-labelledby="gigs-title">
+      <h2 class="section-title" id="gigs-title">{{ t.gigs }}</h2>
+
+      <ol class="gigs" id="upcoming">
+        {%- for gig in gigs %}
+        {%- assign iso = gig.date | date: '%Y-%m-%d' %}
+        {%- if iso >= today %}
+        {%- assign venue = gig.venue %}{% if cy and gig.venue_cy %}{% assign venue = gig.venue_cy %}{% endif %}
+        {%- assign town = gig.town %}{% if cy and gig.town_cy %}{% assign town = gig.town_cy %}{% endif %}
+        {%- assign notes = gig.notes %}{% if cy and gig.notes_cy %}{% assign notes = gig.notes_cy %}{% endif %}
+        {%- capture place %}{{ venue }}{% if town %}, {{ town }}{% endif %}{% endcapture %}
+        {%- capture map_place %}{{ gig.venue }}{% if gig.town %}, {{ gig.town }}{% endif %}{% endcapture %}
+        <li class="gig" id="gig-{{ iso }}-{{ gig.venue | slugify: 'latin' }}" data-date="{{ iso }}" data-time="{{ gig.time | escape }}" data-place="{{ place | escape }}" data-venue="{{ venue | escape }}">
+          <time class="gig-date" datetime="{{ iso }}"><span class="gig-day">{% include date.html date=gig.date format="day" %}</span> <span class="gig-dm">{% include date.html date=gig.date format="dm" %}</span> <span class="gig-year">{{ gig.date | date: '%Y' }}</span></time>
+          <div class="gig-where">
+            <h3 class="gig-venue">{{ venue }}</h3>
+            {%- if town %}
+            <p class="gig-town">{{ town }}</p>
+            {%- endif %}
+            {%- if notes %}
+            <p class="gig-notes">{{ notes }}</p>
+            {%- endif %}
+          </div>
+          {%- if gig.time or gig.price %}
+          <p class="gig-when">
+            {%- if gig.time %}<span>{{ gig.time }}</span>{% endif -%}
+            {%- if gig.price %}<span>{{ gig.price }}</span>{% endif -%}
+          </p>
+          {%- endif %}
+          <ul class="gig-actions">
+            <li><a class="btn" href="{% if gig.map %}{{ gig.map }}{% else %}https://www.google.com/maps/search/?api=1&amp;query={{ map_place | url_encode }}{% endif %}">{{ t.directions }}</a></li>
+            {%- if gig.link %}
+            {%- assign link_text = gig.link_text | default: t.event_page %}{% if cy and gig.link_text_cy %}{% assign link_text = gig.link_text_cy %}{% endif %}
+            <li><a class="btn" href="{{ gig.link }}">{{ link_text }}</a></li>
+            {%- endif %}
+            <li class="js-only" hidden><button class="btn" type="button" data-action="calendar">{{ t.add_to_calendar }}</button></li>
+            <li class="js-only" hidden><button class="btn" type="button" data-action="share">{{ t.share }}</button></li>
+          </ul>
+        </li>
+        {%- endif %}
+        {%- endfor %}
+      </ol>
+
+      <p class="gigs-empty" id="gigs-empty"{% if upcoming_count > 0 %} hidden{% endif %}>{{ t.empty }}</p>
+
+      {%- assign follow = band.links | where: "name", "Instagram" | first %}
+      {%- if follow %}
+      <p class="follow">{{ t.follow | replace: "[url]", follow.url }}</p>
+      {%- endif %}
+
+      {%- assign first_gig = gigs | first %}
+      <div class="past" id="past"{% if past_count == 0 %} hidden{% endif %}>
+        <h3 class="past-title">{{ t.past }}</h3>
+        {%- if first_gig %}
+        {%- assign first_year = first_gig.date | date: '%Y' %}
+        <p class="past-intro">{{ t.past_intro | replace: "[year]", first_year }}</p>
+        {%- endif %}
+        <ol class="gigs gigs-past" id="past-list">
+          {%- for gig in gigs reversed %}
+          {%- assign iso = gig.date | date: '%Y-%m-%d' %}
+          {%- if iso < today %}
+          {%- assign venue = gig.venue %}{% if cy and gig.venue_cy %}{% assign venue = gig.venue_cy %}{% endif %}
+          {%- assign town = gig.town %}{% if cy and gig.town_cy %}{% assign town = gig.town_cy %}{% endif %}
+          {%- assign notes = gig.notes %}{% if cy and gig.notes_cy %}{% assign notes = gig.notes_cy %}{% endif %}
+          <li class="gig" data-date="{{ iso }}">
+            <time class="gig-date" datetime="{{ iso }}"><span class="gig-dm">{% include date.html date=gig.date format="dm" %}</span> <span class="gig-year">{{ gig.date | date: '%Y' }}</span></time>
+            <div class="gig-where">
+              <p class="gig-venue">{{ venue }}</p>
+              {%- if town %}
+              <p class="gig-town">{{ town }}</p>
+              {%- endif %}
+              {%- if notes %}
+              <p class="gig-notes">{{ notes }}</p>
+              {%- endif %}
+              {%- if gig.photos.size > 0 %}
+              {%- capture caption %}{{ venue }}{% if town %}, {{ town }}{% endif %}, {% include date.html date=gig.date format="dmy" %}{% endcapture %}
+              <ul class="gig-photos">
+                {%- for photo in gig.photos %}
+                {%- assign thumb_path = "/images/thumbs/" | append: photo %}
+                {%- assign thumb = site.static_files | where: "path", thumb_path | first %}
+                {%- if gig.photos.size > 1 %}
+                {%- assign alt = t.photo_alt_n | replace: "[n]", forloop.index | replace: "[m]", gig.photos.size | replace: "[caption]", caption %}
+                {%- else %}
+                {%- assign alt = t.photo_alt | replace: "[caption]", caption %}
+                {%- endif %}
+                <li><a href="{{ img }}{{ photo }}" data-group="gig-{{ iso }}" data-caption="{{ caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ photo }}" width="360" height="240" loading="lazy" alt="{{ alt | escape }}"></a></li>
+                {%- endfor %}
+              </ul>
+              {%- endif %}
+            </div>
+          </li>
+          {%- endif %}
+          {%- endfor %}
+        </ol>
+      </div>
+    </section>
+
+    {%- if band.videos.size > 0 %}
+    <section class="section wrap" id="watch" aria-labelledby="watch-title">
+      <h2 class="section-title" id="watch-title">{{ t.watch }}</h2>
+      {%- for v in band.videos %}
+      <div class="video">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/{{ v.id }}" title="{{ v.title | escape }}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+
+    {%- if band.photos.size > 0 %}
+    <section class="section wrap" id="photos" aria-labelledby="photos-title">
+      <h2 class="section-title" id="photos-title">{{ t.photos }}</h2>
+      {%- capture cover_url %}{{ img }}{{ band.cover_photo }}{% endcapture %}
+      <p class="photos-intro">{{ photos_intro }} {% if band.cover_photo %}{{ t.photos_help | replace: "[cover]", cover_url }}{% else %}{{ t.photos_help_no_cover }}{% endif %}</p>
+      <ul class="gallery">
+        {%- for p in band.photos %}
+        {%- assign alt = p.alt %}{% if cy and p.alt_cy %}{% assign alt = p.alt_cy %}{% endif %}
+        <li style="--w: {{ p.width | default: 4 }}; --h: {{ p.height | default: 3 }}"><a href="{{ img }}{{ p.file }}" data-group="photos" data-caption="{{ photos_intro | escape }}" data-download="hot-dawg-assassins-{{ forloop.index }}.jpg"><img src="{{ img }}{{ p.file }}"{% if p.width %} width="{{ p.width }}" height="{{ p.height }}"{% endif %} loading="lazy" alt="{{ alt | escape }}"></a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+
+    {%- if band.reviews.size > 0 %}
+    <section class="section wrap" id="reviews" aria-labelledby="reviews-title">
+      <h2 class="section-title" id="reviews-title">{{ t.reviews }}</h2>
+      <div class="reviews">
+        {%- for r in band.reviews %}
+        {%- assign review_date = r.date %}{% if cy and r.date_cy %}{% assign review_date = r.date_cy %}{% endif %}
+        <figure class="review">
+          <blockquote{% if cy %} lang="en"{% endif %}><p>“{{ r.quote }}”</p></blockquote>
+          <figcaption><a href="{{ r.url }}">{{ r.source }}</a>, {{ r.gig }}, {{ review_date }}</figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    <section class="book" id="book" aria-labelledby="book-title">
+      <div class="wrap">
+        <h2 class="section-title" id="book-title">{{ t.book }}</h2>
+        <p class="book-lead">{{ t.book_lead }}</p>
+        {%- assign facts = band.booking_facts %}{% if cy and band.booking_facts_cy %}{% assign facts = band.booking_facts_cy %}{% endif %}
+        {%- if facts.size > 0 %}
+        <ul class="facts">
+          {%- for f in facts %}
+          <li>{{ f }}</li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+        <p><a class="btn btn-primary" href="mailto:{{ band.email }}?subject={{ t.book_subject }}&amp;body={{ t.book_body }}">{{ t.book_button }}</a></p>
+        <p class="book-contact">{{ t.or_write_to }} <a href="mailto:{{ band.email }}">{{ band.email }}</a>{% if band.phone %} {{ t.or_call }} <a href="tel:{{ band.phone | remove: ' ' }}">{{ band.phone }}</a>{% endif %}.</p>
+        {%- if band.photos.size > 0 %}
+        <p class="book-contact">{{ t.book_posters }}</p>
+        {%- endif %}
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p class="footer-name">{{ band.name }}</p>
+      <ul class="footer-links">
+        {%- for l in band.links %}
+        <li><a href="{{ l.url }}">{{ l.name }}</a></li>
+        {%- endfor %}
+        <li><a href="mailto:{{ band.email }}">{{ t.email }}</a></li>
+        <li><a href="{{ t.switch_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}">{{ t.switch_label }}</a></li>
+      </ul>
+      <p class="footer-small">© {{ site.time | date: '%Y' }} {{ band.name }}</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="{{ t.viewer }}">
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" alt="">
+      <figcaption class="lightbox-caption" data-lb-caption></figcaption>
+    </figure>
+    <div class="lightbox-bar">
+      <button class="btn" type="button" data-lb="prev">{{ t.previous }}</button>
+      <span class="lightbox-count" data-lb-count></span>
+      <button class="btn" type="button" data-lb="next">{{ t.next }}</button>
+      <a class="btn" href="#" data-lb="download" download>{{ t.download }}</a>
+      <button class="btn" type="button" data-lb="close">{{ t.close }}</button>
+    </div>
+  </dialog>
+
+  <p class="visually-hidden" id="status" aria-live="polite"></p>
+  <script src="{{ '/assets/site.js' | relative_url }}"></script>
+</body>
+</html>

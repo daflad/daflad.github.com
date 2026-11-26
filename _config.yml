@@ -1,0 +1,7 @@
+# Jekyll settings for GitHub Pages.
+# Band details live in _data/band.yml and gigs in _data/gigs.yml.
+
+url: https://hotdaw.gs
+
+exclude:
+  - README.md
