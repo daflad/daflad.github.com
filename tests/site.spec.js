@@ -225,7 +225,9 @@ for (const path of ["/past-gigs/", "/cy/past-gigs/"]) {
     const toggle = player.locator(".player-toggle");
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-pressed", "true");
-    await expect.poll(() => audio.evaluate((a) => a.currentTime), { timeout: 15000 }).toBeGreaterThan(0);
+    // Playing, with no errors and the length read from the file. (Not "the time moves" or
+    // "it has buffered": in a test browser those depend on the computer's speakers.)
+    await expect.poll(() => audio.evaluate((a) => !a.paused && !a.error && a.readyState >= 1), { timeout: 15000 }).toBe(true);
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-pressed", "false");
 
