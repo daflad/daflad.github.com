@@ -203,3 +203,36 @@ for (const path of ["/", "/cy/", "/past-gigs/", "/cy/promo/"]) {
     });
   }
 }
+
+for (const path of ["/past-gigs/", "/cy/past-gigs/"]) {
+  test(`${path}: the recording plays, pauses and can be skipped through`, async ({ page, request }) => {
+    await page.goto(path);
+    const player = page.locator("[data-player]").first();
+    const audio = player.locator("audio");
+    await expect(player.locator(".player-ui")).toBeVisible();
+
+    const src = await audio.evaluate((a) => a.currentSrc || a.src);
+    const res = await request.head(src);
+    expect(res.status(), src).toBe(200);
+    expect(res.headers()["content-type"], src).toMatch(/^audio\/mpeg/);
+
+    // The length shows once the browser has read the start of the file.
+    await expect(player.locator("[data-total]")).not.toHaveText("--:--", { timeout: 15000 });
+
+    const toggle = player.locator(".player-toggle");
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-pressed", "true");
+    await expect.poll(() => audio.evaluate((a) => a.currentTime), { timeout: 15000 }).toBeGreaterThan(0);
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-pressed", "false");
+
+    // Moving the bar moves the recording.
+    await player.locator(".player-seek").evaluate((s) => {
+      s.value = 600;
+      s.dispatchEvent(new Event("input"));
+      s.dispatchEvent(new Event("change"));
+    });
+    await expect.poll(() => audio.evaluate((a) => Math.round(a.currentTime)), { timeout: 15000 }).toBe(600);
+    await expect(player.locator("[data-now]")).toHaveText("10:00");
+  });
+}

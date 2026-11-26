@@ -17,6 +17,7 @@
 {%- if cy -%}{%- assign home_url = "/cy/" | relative_url -%}{%- else -%}{%- assign home_url = "/" | relative_url -%}{%- endif -%}
 {%- assign promo = site.data.promo -%}
 {%- assign promo_dir = "/promo/" | relative_url -%}
+{%- assign audio_dir = "/audio/" | relative_url -%}
 {%- if cy -%}{%- assign promo_url = "/cy/promo/" | relative_url -%}{%- else -%}{%- assign promo_url = "/promo/" | relative_url -%}{%- endif -%}
 {%- if cy -%}{%- assign past_url = "/cy/past-gigs/" | relative_url -%}{%- else -%}{%- assign past_url = "/past-gigs/" | relative_url -%}{%- endif -%}
 {%- assign bio = band.bio -%}{%- if cy and band.bio_cy -%}{%- assign bio = band.bio_cy -%}{%- endif -%}

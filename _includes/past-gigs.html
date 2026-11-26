@@ -24,6 +24,17 @@
       {%- if notes %}
       <p class="gig-notes">{{ notes }}</p>
       {%- endif %}
+      {%- if gig.recording %}
+      <div class="player" data-player>
+        <p class="player-label">{{ t.recording }}</p>
+        <audio controls preload="metadata" src="{{ audio_dir }}{{ gig.recording }}"></audio>
+        <div class="player-ui" hidden>
+          <button class="btn player-toggle" type="button" data-play="{{ t.play }}" data-pause="{{ t.pause }}" aria-pressed="false"><svg class="player-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="i-play" d="M4 2.5v11l9.5-5.5z"/><path class="i-pause" d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg><span>{{ t.play }}</span></button>
+          <input class="player-seek" type="range" min="0" max="0" step="1" value="0" aria-label="{{ t.seek }}">
+          <span class="player-time"><span data-now>0:00</span> / <span data-total>--:--</span></span>
+        </div>
+      </div>
+      {%- endif %}
       {%- if gig.flyer or gig.photos.size > 0 %}
       {%- capture caption %}{{ venue }}{% if town %}, {{ town }}{% endif %}, {% include date.html date=gig.date format="dmy" %}{% endcapture %}
       <ul class="gig-photos">

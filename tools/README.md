@@ -55,6 +55,25 @@ Both tools are Mac only. Build them once with `swiftc -O <file>.swift -o /tmp/<n
   For example, a 360 × 240 thumbnail of a 1920 × 1280 photo:
   `/tmp/crop images/new.jpg images/thumbs/new.jpg 0 0 1920 1280 360 240`.
 
+## Recordings (`audio/`)
+
+A gig's recording plays on the past gigs page: put an MP3 in `audio/` and add
+`recording: name.mp3` to the gig in `_data/gigs.yml`.
+
+Make a web copy first. A full-quality file can be 80 MB, and every listener downloads it.
+At 128 kbps a 30-minute set is about 30 MB and still sounds good. MP3 plays in every browser.
+With [ffmpeg](https://ffmpeg.org) (`brew install ffmpeg`):
+
+```sh
+ffmpeg -i original.mp3 -map 0:a -codec:a libmp3lame -b:a 128k \
+  -map_metadata -1 -id3v2_version 0 -write_id3v1 0 -fflags +bitexact -flags:a +bitexact \
+  audio/Name_Of_Gig.mp3
+```
+
+That also removes any tags (recording app, device, location). Keep the original out of the
+repo; only the web copy needs to go up. GitHub warns about files over 50 MB and refuses
+files over 100 MB.
+
 ## Font
 
 `tools/fonts/Archivo.ttf` is Archivo by the Archivo Project Authors, under the SIL Open Font

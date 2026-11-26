@@ -19,6 +19,8 @@
 #   notes: Support from ...       # one short line
 #   notes_cy: Yn cefnogi ...      # the notes in Welsh, for the Welsh page (optional)
 #   flyer: WinterFolk_2023.jpg    # optional: the gig's flyer or poster, in the images folder
+#   recording: Winterwell_Launch_2026.mp3   # optional: an MP3 in the audio folder, played on the
+#                                 # past gigs page (keep it around 128 kbps; see tools/README.md)
 #   photos:                       # optional, for past gigs: photos in the images folder,
 #     - Skerries.jpg              # shown as small pictures you can tap to see full size
 
@@ -29,9 +31,10 @@
   venue: Bonnie Pilgrim Winterwell Launch Party
   venue_cy: Parti Lansio Winterwell Bonnie Pilgrim
   town: YHA Llanberis
-  notes: With Tom Blackwell
-  notes_cy: Gyda Tom Blackwell
+  notes: Supporting Bonnie Pilgrim, with Tom Blackwell
+  notes_cy: Yn cefnogi Bonnie Pilgrim, gyda Tom Blackwell
   flyer: Winterwell_Launch_2026.jpg
+  recording: Winterwell_Launch_2026.mp3
 
 - date: 2023-12-14
   venue: Winter Folk

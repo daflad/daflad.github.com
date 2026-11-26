@@ -301,3 +301,77 @@
     bar.classList.toggle("is-shown", !entries[0].isIntersecting);
   }).observe(header);
 })();
+
+// Recordings on the past gigs page: a Play/Pause button, a bar to move through the
+// recording, and the time. Only one plays at a time.
+(function () {
+  "use strict";
+  var players = document.querySelectorAll("[data-player]");
+  if (!players.length) return;
+
+  function clock(seconds) {
+    if (!isFinite(seconds)) return "--:--";
+    seconds = Math.floor(seconds);
+    var h = Math.floor(seconds / 3600), m = Math.floor((seconds % 3600) / 60), s = seconds % 60;
+    var mm = h ? String(m).padStart(2, "0") : String(m);
+    return (h ? h + ":" : "") + mm + ":" + String(s).padStart(2, "0");
+  }
+
+  Array.prototype.forEach.call(players, function (player) {
+    var audio = player.querySelector("audio");
+    var ui = player.querySelector(".player-ui");
+    var toggle = ui.querySelector(".player-toggle");
+    var label = toggle.querySelector("span");
+    var seek = ui.querySelector(".player-seek");
+    var now = ui.querySelector("[data-now]");
+    var total = ui.querySelector("[data-total]");
+    var dragging = false;
+
+    audio.controls = false;
+    audio.hidden = true;
+    ui.hidden = false;
+
+    function showDuration() {
+      seek.max = isFinite(audio.duration) ? Math.floor(audio.duration) : 0;
+      total.textContent = clock(audio.duration);
+    }
+    function showTime() {
+      if (!dragging) seek.value = Math.floor(audio.currentTime);
+      now.textContent = clock(audio.currentTime);
+      seek.setAttribute("aria-valuetext", clock(audio.currentTime) + " / " + clock(audio.duration));
+    }
+    function showState() {
+      var playing = !audio.paused;
+      toggle.setAttribute("aria-pressed", String(playing));
+      label.textContent = toggle.getAttribute(playing ? "data-pause" : "data-play");
+    }
+
+    audio.addEventListener("loadedmetadata", showDuration);
+    audio.addEventListener("durationchange", showDuration);
+    audio.addEventListener("timeupdate", showTime);
+    audio.addEventListener("play", function () {
+      // Pause any other recording on the page.
+      Array.prototype.forEach.call(document.querySelectorAll("[data-player] audio"), function (other) {
+        if (other !== audio) other.pause();
+      });
+      showState();
+    });
+    audio.addEventListener("pause", showState);
+    audio.addEventListener("ended", showState);
+
+    toggle.addEventListener("click", function () {
+      if (audio.paused) audio.play();
+      else audio.pause();
+    });
+    seek.addEventListener("input", function () {
+      dragging = true;
+      now.textContent = clock(Number(seek.value));
+    });
+    seek.addEventListener("change", function () {
+      audio.currentTime = Number(seek.value);
+      dragging = false;
+    });
+
+    if (audio.readyState >= 1) showDuration();
+  });
+})();
