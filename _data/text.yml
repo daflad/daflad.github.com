@@ -6,6 +6,7 @@ en:
   html_lang: en-GB
   og_locale: en_GB
   switch_label: Cymraeg
+  switch_short: CY
   switch_lang: cy
   nav_label: Main
   gigs: Gigs
@@ -85,6 +86,7 @@ cy:
   html_lang: cy
   og_locale: cy_GB
   switch_label: English
+  switch_short: EN
   switch_lang: en
   nav_label: Prif ddewislen
   gigs: Gigiau

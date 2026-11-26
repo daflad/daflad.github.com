@@ -83,6 +83,7 @@
           <li><a href="#watch">{{ t.watch }}</a></li>
           {%- endif %}
           <li><a href="#book">{{ t.book }}</a></li>
+          <li><a href="{{ other_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}">{{ t.switch_label }}</a></li>
         </ul>
       </nav>
     </div>

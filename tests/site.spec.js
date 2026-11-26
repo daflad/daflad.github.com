@@ -77,6 +77,7 @@ for (const p of PAGES) {
 for (const h of HOMES) {
   test(`${h.path}: links to the past gigs and promo kit pages`, async ({ page }) => {
     await page.goto(h.path);
+    await expect(page.locator(".masthead nav a[hreflang]"), "language switch in the menu").toBeVisible();
     await expect(page.locator(`a[href="${h.past}"]`).first()).toBeVisible();
     await expect(page.locator(`#book a[href="${h.promo}"]`)).toBeVisible();
     await expect(page.locator(`footer a[href="${h.promo}"]`)).toBeVisible();
@@ -190,6 +191,7 @@ for (const path of ["/", "/cy/", "/past-gigs/", "/cy/promo/"]) {
         window.scrollTo(0, header.offsetTop + header.offsetHeight + 200);
       });
       await expect(bar).toBeVisible();
+      await expect(bar.locator(".bar-lang"), "language switch in the bar").toBeVisible();
       const fit = await bar.evaluate((el) => ({
         bookRight: el.querySelector(".bar-book").getBoundingClientRect().right,
         height: el.getBoundingClientRect().height,

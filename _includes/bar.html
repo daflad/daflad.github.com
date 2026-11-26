@@ -11,6 +11,7 @@
           {%- if band.videos.size > 0 %}
           <li class="bar-optional"><a href="{{ home_url }}#watch">{{ t.watch }}</a></li>
           {%- endif %}
+          <li><a class="bar-lang" href="{{ other_url | relative_url }}" hreflang="{{ t.switch_lang }}" lang="{{ t.switch_lang }}" aria-label="{{ t.switch_label }}"><span class="lang-long" aria-hidden="true">{{ t.switch_label }}</span><span class="lang-short" aria-hidden="true">{{ t.switch_short }}</span></a></li>
           <li><a class="bar-book" href="{{ home_url }}#book">{{ t.book }}</a></li>
         </ul>
       </nav>
