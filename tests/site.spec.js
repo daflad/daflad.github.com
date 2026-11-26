@@ -214,7 +214,8 @@ for (const path of ["/past-gigs/", "/cy/past-gigs/"]) {
     const src = await audio.evaluate((a) => a.currentSrc || a.src);
     const res = await request.head(src);
     expect(res.status(), src).toBe(200);
-    expect(res.headers()["content-type"], src).toMatch(/^audio\/mpeg/);
+    // GitHub Pages says "audio/mp3", most servers "audio/mpeg"; browsers accept both.
+    expect(res.headers()["content-type"], src).toMatch(/^audio\/(mpeg|mp3)/);
 
     // The length shows once the browser has read the start of the file.
     await expect(player.locator("[data-total]")).not.toHaveText("--:--", { timeout: 15000 });
