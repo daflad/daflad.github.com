@@ -60,6 +60,12 @@ for (const p of PAGES) {
     });
   }
 
+  test(`${p.path}: stylesheet and script are versioned, so a new page never gets an old cached copy`, async ({ page }) => {
+    await page.goto(p.path);
+    await expect(page.locator('link[rel="stylesheet"][href*="/assets/site.css?v="]')).toHaveCount(1);
+    await expect(page.locator('script[src*="/assets/site.js?v="]')).toHaveCount(1);
+  });
+
   test(`${p.path}: the language switch goes to the same page in the other language`, async ({ page }) => {
     await page.goto(p.path);
     const hrefs = await page.locator("a[hreflang]").evaluateAll((as) => as.map((a) => new URL(a.href).pathname));
