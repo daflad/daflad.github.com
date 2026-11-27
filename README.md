@@ -38,6 +38,7 @@ Photos straight from a phone can include where they were taken, and anyone can d
   ```yaml
     photos:
       - Skerries.jpg
+    photos_by: Gavin Mart     # optional: who took them, credited under the photos
   ```
 
   They show as small pictures under the gig. For a faster page, also upload a small copy (about 360 × 240) with the same name to `images/thumbs`.

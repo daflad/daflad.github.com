@@ -51,7 +51,8 @@ Both tools are Mac only. Build them once with `swiftc -O <file>.swift -o /tmp/<n
   `/tmp/strip <output-folder> <photo>...` writes clean copies into the output folder.
   Do this for every photo from a phone before it goes in `images/`.
 - `tools/images/crop.swift` crops and resizes, for thumbnails and header crops:
-  `/tmp/crop <in> <out.jpg> <x> <y> <w> <h> <outW> <outH> [quality]` (x and y from the top left).
+  `/tmp/crop <in> <out.jpg> <x> <y> <w> <h> <outW> <outH> [quality]` (x and y from the top left;
+  quality from 0 to 1, 0.86 if left out).
   For example, a 360 × 240 thumbnail of a 1920 × 1280 photo:
   `/tmp/crop images/new.jpg images/thumbs/new.jpg 0 0 1920 1280 360 240`.
 

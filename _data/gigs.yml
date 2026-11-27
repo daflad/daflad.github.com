@@ -23,9 +23,12 @@
 #                                 # past gigs page (keep it around 128 kbps; see tools/README.md)
 #   photos:                       # optional, for past gigs: photos in the images folder,
 #     - Skerries.jpg              # shown as small pictures you can tap to see full size
+#   photos_by: Gavin Mart         # optional: who took the photos, credited under them
 
 
 # Past gigs
+# Most of these come from the band's Facebook page (the export of 27 Nov 2026): the band's own
+# events, and posts from the day before, the day itself or just after.
 
 - date: 2026-11-21
   venue: Bonnie Pilgrim Winterwell Launch Party
@@ -35,6 +38,11 @@
   notes_cy: Yn cefnogi Bonnie Pilgrim, gyda Tom Blackwell
   flyer: Winterwell_Launch_2026.jpg
   recording: Winterwell_Launch_2026.mp3
+  photos:
+    - 4642D018-1141-4687-A579-C6F7432E86A8.jpg
+    - DC46CD5D-4FD7-47C1-AB1A-8DFCFB544BC4.jpg
+    - 43CB0E43-03DF-4D48-A626-53B173A7F8FD.jpg
+    - FF4F86F6-4AA3-4402-A68C-E52A3677D055.jpg
 
 - date: 2023-12-14
   venue: Winter Folk
@@ -42,6 +50,43 @@
   notes: With Tino and Bonnie Pilgrim
   notes_cy: Gyda Tino a Bonnie Pilgrim
   flyer: WinterFolk_2023.jpg
+
+- date: 2023-04-27
+  venue: Crosville Club
+  town: Bangor
+  notes: Curiad Bangor Pulse festival, with Adelphi, White Ether, Emissaries of Syn and Red or Dead
+  notes_cy: Gŵyl Curiad Bangor Pulse, gydag Adelphi, White Ether, Emissaries of Syn a Red or Dead
+
+- date: 2019-06-02
+  venue: Covefest
+  town: Bangor
+  notes: All-day festival at Cove
+  notes_cy: Gŵyl undydd yn Cove
+  photos:
+    - Covefest_2019_1.jpg
+    - Covefest_2019_2.jpg
+    - Covefest_2019_3.jpg
+
+- date: 2018-04-28
+  venue: Conwy Comrades Club
+  town: Conwy
+  notes: The Conwy All Dayer, with Revenge of the Psychotronic Man, Red or Dead, Emissaries of Syn and others
+  notes_cy: The Conwy All Dayer, gyda Revenge of the Psychotronic Man, Red or Dead, Emissaries of Syn ac eraill
+  photos:
+    - Conwy_2018.jpg
+
+- date: 2017-12-02
+  venue: Neuadd Ogwen
+  town: Bethesda
+  notes: In the bar, with Colossous and Farside
+  notes_cy: Yn y bar, gyda Colossous a Farside
+  photos:
+    - Neuadd_Ogwen_2017.jpg
+
+- date: 2017-10-14
+  venue: Tyddyn Teg Harvest Festival
+  venue_cy: Gŵyl Gynhaeaf Tyddyn Teg
+  town: Bethel, Caernarfon
 
 - date: 2016-09-19
   venue: The Skerries
@@ -51,49 +96,207 @@
   photos:
     - Skerries.jpg
 
+- date: 2016-06-18
+  venue: Tyddyn Teg
+  town: Bethel, Caernarfon
+
 - date: 2015-08-20
   venue: Crosville Club
   town: Bangor
   notes: With Shoshin and Doll Circus
   notes_cy: Gyda Shoshin a Doll Circus
 
-- date: 2015-03-02              # the date one of the photos was taken
-  venue: Blue Sky Café
+- date: 2015-07-09
+  venue: The Skerries
   town: Bangor
-  photos:
-    - BlueSky.jpg
+
+- date: 2015-06-12              # Facebook gives the date; the Daily Post listing the other acts
+  venue: The Victoria Hotel
+  town: Menai Bridge
+  town_cy: Porthaethwy
+  notes: Peace and justice night, with Cane Toads and Dan Amor
+  notes_cy: Noson heddwch a chyfiawnder, gyda Cane Toads a Dan Amor
 
 - date: 2015-05-29
   venue: The Belle Vue
   town: Bangor
   notes: Curiad Bangor Pulse festival
   notes_cy: Gŵyl Curiad Bangor Pulse
+  photos:
+    - Belle_Vue_2015.jpg
 
-- date: 2014-06-06
+# The photo once listed here (BlueSky.jpg) is from the Crosville gig in March 2014.
+- date: 2015-03-02
+  venue: Blue Sky Café
+  town: Bangor
+
+- date: 2015-02-26
+  venue: Crosville Club
+  town: Bangor
+
+- date: 2015-01-16
+  venue: Greek Taverna
+  town: Bangor
+  notes: With Jah Bar Sound System
+  notes_cy: Gyda Jah Bar Sound System
+  flyer: Greek_2015.jpg
+
+- date: 2014-12-20
+  venue: Neuadd Ogwen
+  town: Bethesda
+  notes: Bethesda 2 Bethlehem, supporting Banda Bacana and Fay Ray
+  notes_cy: Bethesda 2 Bethlehem, yn cefnogi Banda Bacana a Fay Ray
+  photos:
+    - Neuadd_Ogwen_2014_1.jpg
+    - Neuadd_Ogwen_2014_2.jpg
+  photos_by: Gavin Mart
+
+- date: 2014-12-14
+  venue: Moelyci Festive Fair
+  venue_cy: Ffair Nadolig Moelyci
+  town: Tregarth
+  notes: With The Guitarist & The Girl and Andy Bob Beaumont
+  notes_cy: Gyda The Guitarist & The Girl ac Andy Bob Beaumont
+
+- date: 2014-09-20
+  venue: Hendre Hall
+  town: Bangor
+  notes: Fundraiser for Palestine
+  notes_cy: Noson codi arian i Balesteina
+
+- date: 2014-09-11
+  venue: The Skerries
+  town: Bangor
+  notes: Supporting Loose Fish
+  notes_cy: Yn cefnogi Loose Fish
+
+- date: 2014-08-09
+  venue: Kaya Weekender
+  town: Faenol Estate, Bangor
+  town_cy: Ystad y Faenol, Bangor
+  photos:
+    - kaya_large.jpg
+    - Kaya_Weekender_2014_1.jpg
+    - Kaya_Weekender_2014_2.jpg
+  photos_by: Corrie
+
+- date: 2014-07-12
+  venue: The Belle Vue
+  town: Bangor
+  notes: Owain and Steve, acoustic, at the launch of the Kaya charity
+  notes_cy: Owain a Steve, yn acwstig, yn lansiad elusen Kaya
+
+- date: 2014-06-08              # moved from the Friday to the Sunday
   venue: Awareness Festival
   venue_cy: Gŵyl Awareness
   town: Faenol Estate, Bangor
   town_cy: Ystad y Faenol, Bangor
 
+- date: 2014-03-27
+  venue: Crosville Club
+  town: Bangor
+  photos:
+    - Crosville_2014.jpg
+    - BlueSky.jpg
+
 - date: 2014-01-24
-  venue: Tan Y Coed Hotel
+  venue: Tyn-y-Coed Hotel
   town: Capel Curig
 
-- date: 2012-06-03              # the Daily Post preview put local acts on the Sunday
+- date: 2013-10-05
+  venue: Ogwen River Fest
+  town: Bethesda
+  notes: At Bethesda Rugby Club
+  notes_cy: Yng Nghlwb Rygbi Bethesda
+
+- date: 2013-10-04
+  venue: Tŷ Gwydr
+  town: Bangor
+
+- date: 2013-09-15
+  venue: Deiniol Shopping Centre
+  venue_cy: Canolfan Siopa Deiniol
+  town: Bangor
+  notes: For the YoungMinds charity, with The Guitarist & The Girl
+  notes_cy: Ar gyfer elusen YoungMinds, gyda The Guitarist & The Girl
+
+- date: 2013-09-01
+  venue: The Victoria Hotel
+  town: Menai Bridge
+  town_cy: Porthaethwy
+  notes: Menai Bridge Seafood Festival
+  notes_cy: Gŵyl Fwyd Môr Porthaethwy
+
+- date: 2013-08-25
+  venue: Fynach Folk Ho Down
+  town: Rhos-on-Sea
+  town_cy: Llandrillo-yn-Rhos
+
+- date: 2013-07-12              # the day before the band's "that was an interesting one!" post
+  venue: The Heights
+  town: Llanberis
+
+- date: 2013-06-28
+  venue: The Victoria Hotel
+  town: Menai Bridge
+  town_cy: Porthaethwy
+  notes: With Cane Toads
+  notes_cy: Gyda Cane Toads
+
+- date: 2013-04-05
+  venue: Tŷ Gwydr
+  town: Bangor
+  notes: With The Guitarist & The Girl
+  notes_cy: Gyda The Guitarist & The Girl
+
+- date: 2013-02-28
+  venue: Cross Keys
+  town: Llandudno
+  notes: With Bonzai Massacre
+  notes_cy: Gyda Bonzai Massacre
+
+- date: 2012-12-09
+  venue: Moelyci Festive Fair
+  venue_cy: Ffair Nadolig Moelyci
+  town: Tregarth
+
+- date: 2012-08-19
+  venue: The Heights
+  town: Llanberis
+  notes: With Folkin' Rubbish and Poppy Fields
+  notes_cy: Gyda Folkin' Rubbish a Poppy Fields
+
+- date: 2012-06-03              # Sunday afternoon, in the tent at the top of the hill
   venue: Kaya Festival
   venue_cy: Gŵyl Kaya
   town: Faenol Estate, Bangor
   town_cy: Ystad y Faenol, Bangor
   photos:
-    - kaya_large.jpg
+    - Kaya_2012_1.jpg
+    - Kaya_2012_2.jpg
 
-- date: 2011-11-30
-  venue: Heights
+- date: 2012-03-11
+  venue: The Heights
   town: Llanberis
-  notes: First gig
-  notes_cy: Gig cyntaf
+  notes: With Main Line Power Squadron
+  notes_cy: Gyda Main Line Power Squadron
 
-# Found online but not confirmed. Remove the # from a block if you did play it.
+- date: 2012-02-22
+  venue: Greek Taverna
+  town: Bangor
+  notes: Clwb Cabaret
+  notes_cy: Clwb Cabaret
+
+- date: 2011-12-04              # the Sunday, from the band's posts at the time
+  venue: The Heights
+  town: Llanberis
+  notes: First gig, with Sundance, Pretty Places and Lhotse Sounds
+  notes_cy: Gig cyntaf, gyda Sundance, Pretty Places a Lhotse Sounds
+
+# Not listed yet because there's no date. Add them if you find one.
+#
+# From Facebook: the Skerries in mid-August 2014 (after Kaya Weekender), the Skerries again in
+# the autumn of 2014 (after Hendre Hall), and the Moelyci Christmas fair in December 2013.
 #
 # The 2015 site also listed the Skerries and Tŷ Gwydr on 30 May, and the Skerries,
 # the Crossville Club and Tŷ Gwydr on 31 May, for Curiad Bangor Pulse.
@@ -102,8 +305,3 @@
 #   venue: The Skerries
 #   town: Bangor
 #   notes: Supporting Milo, with Velvet
-#
-# - date: 2015-06-XX              # Daily Post listing, June 2015; put in the day
-#   venue: The Victoria Hotel
-#   town: Menai Bridge
-#   notes: With Cane Toads and Dan Amor

@@ -546,6 +546,13 @@ html { scroll-padding-top: 4.5rem; }
 
 .gig-photos a:hover img { outline: 1px solid var(--text); }
 
+/* Who took a gig's photos. */
+.gig-credit {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
 /* A gig's recording. Without JavaScript the browser's own player shows;
    site.js swaps in these controls. */
 .player {

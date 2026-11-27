@@ -24,8 +24,8 @@ en:
   follow: >-
     Follow us on <a href="[url]">Instagram</a> to hear about new gigs.
   past: Past gigs
-  past_intro: A handful of the gigs we've played since [year].
-  past_description: A handful of the gigs Hot Dawg Assassins have played since 2011, with flyers and photos.
+  past_intro: Some of the gigs we've played since [year].
+  past_description: Some of the gigs Hot Dawg Assassins have played since 2011, with flyers and photos.
   upcoming_link: Upcoming gigs
   promo_description: Posters, social images, logos and band text for promoters. Free to use.
   promo_photos: >-
@@ -33,6 +33,8 @@ en:
   photo_alt: Photo from [caption]
   photo_alt_n: Photo [n] of [m] from [caption]
   flyer_alt: Flyer for [caption]
+  photo_by: Photo by [name]
+  photos_by: Photos by [name]
   recording: Our set from the night
   play: Play
   pause: Pause
@@ -105,8 +107,8 @@ cy:
   follow: >-
     Dilynwch ni ar <a href="[url]">Instagram</a> i glywed am gigiau newydd.
   past: Gigiau blaenorol
-  past_intro: Llond llaw o'r gigiau rydyn ni wedi'u chwarae ers [year].
-  past_description: Llond llaw o'r gigiau mae Hot Dawg Assassins wedi'u chwarae ers 2011, gyda phosteri a lluniau.
+  past_intro: Rhai o'r gigiau rydyn ni wedi'u chwarae ers [year].
+  past_description: Rhai o'r gigiau mae Hot Dawg Assassins wedi'u chwarae ers 2011, gyda phosteri a lluniau.
   upcoming_link: Gigiau i ddod
   promo_description: Posteri, delweddau cymdeithasol, logos a thestun am y band i hyrwyddwyr. Mae croeso i chi eu defnyddio.
   promo_photos: >-
@@ -114,6 +116,8 @@ cy:
   photo_alt: "Llun: [caption]"
   photo_alt_n: "Llun [n] o [m]: [caption]"
   flyer_alt: "Poster ar gyfer [caption]"
+  photo_by: Llun gan [name]
+  photos_by: Lluniau gan [name]
   recording: Ein set ni o'r noson
   play: Chwarae
   pause: Saib

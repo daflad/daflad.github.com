@@ -37,6 +37,13 @@
       {%- endif %}
       {%- if gig.flyer or gig.photos.size > 0 %}
       {%- capture caption %}{{ venue }}{% if town %}, {{ town }}{% endif %}, {% include date.html date=gig.date format="dmy" %}{% endcapture %}
+      {%- comment -%} Who took the photos (photos_by in gigs.yml): under the photos, and on each one in the viewer. {%- endcomment -%}
+      {%- assign credit = "" %}{% assign photo_caption = caption %}
+      {%- if gig.photos_by and gig.photos.size > 0 %}
+      {%- if gig.photos.size > 1 %}{% assign credit = t.photos_by %}{% else %}{% assign credit = t.photo_by %}{% endif %}
+      {%- assign credit = credit | replace: "[name]", gig.photos_by %}
+      {%- capture photo_caption %}{{ caption }}. {{ t.photo_by | replace: "[name]", gig.photos_by }}{% endcapture %}
+      {%- endif %}
       <ul class="gig-photos">
         {%- if gig.flyer %}
         {%- assign thumb_path = "/images/thumbs/" | append: gig.flyer %}
@@ -52,9 +59,12 @@
         {%- else %}
         {%- assign alt = t.photo_alt | replace: "[caption]", caption %}
         {%- endif %}
-        <li><a href="{{ img }}{{ photo }}" data-group="gig-{{ iso }}" data-caption="{{ caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ photo }}" width="360" height="240" loading="lazy" alt="{{ alt | escape }}"></a></li>
+        <li><a href="{{ img }}{{ photo }}" data-group="gig-{{ iso }}" data-caption="{{ photo_caption | escape }}"><img src="{{ img }}{% if thumb %}thumbs/{% endif %}{{ photo }}" width="360" height="240" loading="lazy" alt="{{ alt | escape }}"></a></li>
         {%- endfor %}
       </ul>
+      {%- if credit != "" %}
+      <p class="gig-credit">{{ credit }}</p>
+      {%- endif %}
       {%- endif %}
     </div>
   </li>

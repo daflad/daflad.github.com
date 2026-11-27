@@ -145,6 +145,17 @@ for (const path of ["/past-gigs/", "/cy/past-gigs/"]) {
   });
 }
 
+for (const [path, credit] of [["/past-gigs/", "Photos by Gavin Mart"], ["/cy/past-gigs/", "Lluniau gan Gavin Mart"]]) {
+  test(`${path}: photographers are credited under their photos and in the viewer`, async ({ page }) => {
+    await page.goto(path);
+    const gig = page.locator('#past-list > li[data-date="2014-12-20"]');
+    await expect(gig.locator(".gig-credit")).toHaveText(credit);
+    await gig.locator(".gig-photos a").first().click();
+    await expect(page.locator("#lightbox [data-lb-caption]")).toContainText("Gavin Mart");
+    await page.keyboard.press("Escape");
+  });
+}
+
 for (const path of ["/promo/", "/cy/promo/"]) {
   test(`${path}: every promo kit download works`, async ({ page, request }) => {
     await page.goto(path);
